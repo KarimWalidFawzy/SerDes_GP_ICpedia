@@ -1,7 +1,7 @@
 package monitor ;
 import uvm_pkg::*;
 `include "uvm_macros.svh"
-import seq_item::*;
+import seq_item::*; //dummy 
 	class enc_monitor extends uvm_monitor;
 
 		`uvm_component_utils(enc_monitor)
