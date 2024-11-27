@@ -5,10 +5,11 @@
 ../hdl/designs/rx/SIPO.v
 ../hdl/designs/rx/comma_detection.v
 ../hdl/designs/top_module.v
+enums_pkg.sv
 top_if.sv
 
 //uvm
-enums_pkg.sv
+
 transaction_item.sv
 enc_dec_sequence.sv
 sequencer.sv
