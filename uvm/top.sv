@@ -28,6 +28,7 @@ module top();
             .RxDataK(top_if.RxDataK),
             .RxParallel_8(top_if.RxParallel_8[7:0])
         );
+        bind top_module assertions_top assertions_top_i(top_if.DUT);
     `elsif ENCODER
         encoder_if encoder_if (BitCLK_10);
         encoder encoder(
@@ -37,6 +38,7 @@ module top();
             .TxDataK(encoder_if.TxDataK),
             .TxParallel_10(encoder_if.TxParallel_10)
         );
+        bind encoder assertions_encoder assertions_encoder_i(encoder_if.DUT);
     `elsif PISO
         piso_if piso_if (BitCLK);
         PISO piso(
@@ -45,6 +47,7 @@ module top();
             .Serial(piso_if.Serial),
             .TxParallel_10(piso_if.TxParallel_10)
         );
+        bind PISO assertions_piso assertions_piso_i(piso_if.DUT);
     `elsif SIPO
         sipo_if sipo_if (BitCLK);
         SIPO sipo(
@@ -54,6 +57,7 @@ module top();
             .RxParallel_10(sipo_if.RxParallel_10),
             .Comma(sipo_if.Comma)
         );
+        bind SIPO assertions_sipo assertions_sipo_i(sipo_if.DUT);
     `elsif DECODER
         decoder_if decoder_if (BitCLK_10);
         decoder decoder(
@@ -63,6 +67,7 @@ module top();
             .RxDataK(decoder_if.RxDataK),
             .RxParallel_8(decoder_if.RxParallel_8[7:0])
         );
+        bind decoder assertions_decoder assertions_decoder_i(decoder_if.DUT);
     `endif
 
     initial begin
