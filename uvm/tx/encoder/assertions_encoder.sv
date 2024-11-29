@@ -1,7 +1,47 @@
+import enum ::*;
 module assertions_encoder (encoder_if.DUT _if);
     
     //*****************************//
-    // TODO: Write Assertions Here //
+    // : Write Assertions Here //
     //*****************************//
+    int x ; // declaring Rd 
+initial begin
+ x=-1;
+end
+forever begin   
+@(posedge _if.BitCLK_10)
+for (i =0 ;i<10 ;i++ ) begin
+   if(_if.TxParallel_10[i])
+   x++;
+   else x--
+end 
+
+end
+
+        // Property to check for no 5 consecutive 1s or 0s in TxParallel_10
+        property five_consecutive_bits;
+            disable iff (!_if.Reset || _if.TxParallel_8== K_28_1 ||_if.TxParallel_8 ==K_28_5 || _if.TxParallel_8==K_28_7  )       // Disable the property during reset and during k28.1,k28.5,k28.7
+            !(_if.TxParallel_10[9:5] == 5'b11111 || _if.TxParallel_10[9:5] == 5'b00000 ||
+              _if.TxParallel_10[8:4] == 5'b11111 || _if.TxParallel_10[8:4] == 5'b00000 ||  
+              _if.TxParallel_10[7:3] == 5'b11111 || _if.TxParallel_10[7:3] == 5'b00000 || 
+              _if.TxParallel_10[6:2] == 5'b11111 || _if.TxParallel_10[6:2] == 5'b00000 || 
+              _if.TxParallel_10[5:1] == 5'b11111 || _if.TxParallel_10[5:1] == 5'b00000 ||
+              _if.TxParallel_10[4:0] == 5'b11111 || _if.TxParallel_10[4:0] == 5'b00000);   
+        endproperty
+    property disparity ;
+        disable iff(!_if.Reset)
+        !( x>2 || x<-2
+        );
+    endproperty
+        // Assert the property
+        assert_five_consecutive_bits: assert property (five_consecutive_bits)
+            else $error("5 consecutive 1s or 0s detected in TxParallel_10: %b", _if.TxParallel_10);
+            
+
+            assert_disparity: assert property (disparity)
+            else $error("disparity error");
+    
+
+    
 
 endmodule
