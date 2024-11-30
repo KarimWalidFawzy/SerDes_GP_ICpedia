@@ -2,10 +2,11 @@ package driver_encoder;
     import uvm_pkg::*;
     `include "uvm_macros.svh"
     import sequence_item_encoder ::*;
-
+    import enums ::*;
     class driver_encoder extends uvm_driver #(sequence_item_encoder);
         `uvm_component_utils(driver_encoder)
     
+           
         virtual encoder_if vif;
     
         function new(string name, uvm_component parent);
@@ -22,6 +23,9 @@ package driver_encoder;
             vif.Reset=0;
             @(negedge vif.BitCLK_10);
             vif.Reset=1;
+            @(negedge vif.BitCLK_10);
+            vif.TxDataK=1;
+            vif.TxParallel_8 = S_28_5;
             forever begin
                 seq_item_port.get_next_item(req);
                 drive_item(req);
@@ -31,10 +35,9 @@ package driver_encoder;
 
         virtual task drive_item(sequence_item_encoder rhs);
             @(negedge vif.BitCLK_10);
-            //*************************//
-            // TODO: Drive Inputs Here //
-            //*************************//
-            // example: vif.signal = rhs.signal;
+            vif.TxDataK=rhs.TxDataK;
+            vif.TxParallel_8 = rhs.input_data;
+
         endtask : drive_item
 
     endclass
