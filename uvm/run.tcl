@@ -19,15 +19,12 @@ switch $design_block {
         set path rx/decoder
     }
 }
-
 vlog -f $path/runfiles.f +define+$design_block \
 
 vsim -voptargs=+acc work.top +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH
 
 add wave -position insertpoint \
-
 sim:/top/$design_block_if/* \
-sim:/top/ncoder/assertions_encoder_i/assert_five_consecutive_bits/* \
-sim:/top/ncoder/assertions_encoder_i/assert_disparity/* \
+
 
 run -all

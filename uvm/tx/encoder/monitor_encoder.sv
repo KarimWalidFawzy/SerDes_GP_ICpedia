@@ -33,10 +33,9 @@ package monitor_encoder;
 		virtual task sample_item();
 			sequence_item_encoder resp = sequence_item_encoder::type_id::create("resp");            
 			@(posedge vif.BitCLK_10);
-            //***************************//
-            // TODO: Sample Outputs Here //
-            //***************************//
-			// example: resp.signal = vif.signal
+
+			resp.input_data=vif.TxParallel_8;
+			resp.output_data=vif.TxParallel_10;
 			item_collected_port.write(resp);
 		endtask : sample_item
 

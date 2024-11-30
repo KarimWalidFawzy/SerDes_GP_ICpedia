@@ -13,11 +13,13 @@ initial begin
     x=-1;
     forever begin
         @(posedge _if.BitCLK_10)
+        if(_if.Reset) begin
         for (i =0 ;i<10 ;i++ ) begin
             if(_if.TxParallel_10[i])
             x=x+1;
             else x=x-1;
-         end  
+         end 
+        end
     end
 end
     

@@ -7,7 +7,7 @@ package sequence_item_encoder;
         `uvm_object_utils (sequence_item_encoder)
         rand data_symbol input_data;
         rand bit TxDataK;
-        bit output_data [7:0];
+        bit[9:0] output_data ;
 
 
 
@@ -21,6 +21,10 @@ package sequence_item_encoder;
         endfunction : new
   constraint tx_data_k_const {
     TxDataK dist {1:=15 ,0:=85};
+        }
+        //add constraint for control data with tx data k
+        constraint input_data_temp_constraint {
+            input_data inside {S_0_0,S_0_1,S_0_2,S_1_3,S_2_3,S_1_0,S_3_3};  
         }
    
 
