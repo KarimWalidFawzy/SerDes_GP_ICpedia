@@ -10,7 +10,7 @@ reg disparity;
 reg [5:0] TxParallel_6;
 reg [3:0] TxParallel_4;
 
-assign TxParallel_10 = {TxParallel_6, TxParallel_4};
+assign TxParallel_10 = {TxParallel_4, TxParallel_6};
 
 always @(*) begin
     TxParallel_6 = 0;
@@ -170,11 +170,11 @@ always @(posedge BitCLK_10, negedge Reset) begin
     if (!Reset) begin
         disparity <= 0;
     end else begin
-        if (^TxParallel_10) begin
+        if (!(^TxParallel_10)) begin
             disparity <= disparity + 1;
         end
     end
-    
+
 end
 
 endmodule

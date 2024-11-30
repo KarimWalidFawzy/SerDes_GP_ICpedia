@@ -45,11 +45,11 @@ end
         assert_five_consecutive_bits: assert property (five_consecutive_bits)
             else $error("5 consecutive 1s or 0s detected in TxParallel_10: %b", _if.TxParallel_10);
             
-
-            assert_disparity: assert property (disparity)
+        assert_disparity: assert property (disparity)
             else $error("disparity error");
-    
 
+        assert_five_consecutive_bits_cover: cover property (five_consecutive_bits);
+        assert_disparity_cover: cover property (disparity);
     
 
 endmodule

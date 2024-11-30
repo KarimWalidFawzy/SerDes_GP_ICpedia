@@ -24,7 +24,7 @@ package sequence_item_encoder;
         }
         //add constraint for control data with tx data k
         constraint input_data_temp_constraint {
-            input_data inside {S_0_0,S_0_1,S_0_2,S_1_3,S_2_3,S_1_0,S_3_3};  
+            // input_data inside {S_0_0,S_0_1,S_0_2,S_1_3,S_2_3,S_1_0,S_3_3};  
         }
    
 
