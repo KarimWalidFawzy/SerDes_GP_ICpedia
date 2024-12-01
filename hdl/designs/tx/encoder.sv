@@ -16,84 +16,84 @@ always @(*) begin
     TxParallel_6 = 0;
     if (disparity) begin
         case (TxParallel_8[4:0])
-            5'h0: TxParallel_6 = 6'b011000;
-            5'h1: TxParallel_6 = 6'b100010;
-            5'h2: TxParallel_6 = 6'b010010;
-            5'h3: TxParallel_6 = 6'b110001;
-            5'h4: TxParallel_6 = 6'b001010;
-            5'h5: TxParallel_6 = 6'b101001;
-            5'h6: TxParallel_6 = 6'b011001;
-            5'h7: TxParallel_6 = 6'b000111;
-            5'h8: TxParallel_6 = 6'b000110;
-            5'h9: TxParallel_6 = 6'b100101;
-            5'hA: TxParallel_6 = 6'b010101;
-            5'hB: TxParallel_6 = 6'b110100;
-            5'hC: TxParallel_6 = 6'b001101;
-            5'hD: TxParallel_6 = 6'b101100;
-            5'hE: TxParallel_6 = 6'b011100;
-            5'hF: TxParallel_6 = 6'b101000;
-            5'h10: TxParallel_6 = 6'b100100;
-            5'h11: TxParallel_6 = 6'b100011;
-            5'h12: TxParallel_6 = 6'b010011;
-            5'h13: TxParallel_6 = 6'b110010;
-            5'h14: TxParallel_6 = 6'b001011;
-            5'h15: TxParallel_6 = 6'b101010;
-            5'h16: TxParallel_6 = 6'b011010;
-            5'h17: TxParallel_6 = 6'b000101;
-            5'h18: TxParallel_6 = 6'b001100;
-            5'h19: TxParallel_6 = 6'b100110;
-            5'h1A: TxParallel_6 = 6'b010110;
-            5'h1B: TxParallel_6 = 6'b001001;
+            5'h00: TxParallel_6 = 6'h06;
+            5'h01: TxParallel_6 = 6'h11;
+            5'h02: TxParallel_6 = 6'h12;
+            5'h03: TxParallel_6 = 6'h23;
+            5'h04: TxParallel_6 = 6'h14;
+            5'h05: TxParallel_6 = 6'h25;
+            5'h06: TxParallel_6 = 6'h26;
+            5'h07: TxParallel_6 = 6'h38;
+            5'h08: TxParallel_6 = 6'h18;
+            5'h09: TxParallel_6 = 6'h29;
+            5'h0A: TxParallel_6 = 6'h2A;
+            5'h0B: TxParallel_6 = 6'h0B;
+            5'h0C: TxParallel_6 = 6'h2C;
+            5'h0D: TxParallel_6 = 6'h0D;
+            5'h0E: TxParallel_6 = 6'h0E;
+            5'h0F: TxParallel_6 = 6'h05;
+            5'h10: TxParallel_6 = 6'h09;
+            5'h11: TxParallel_6 = 6'h31;
+            5'h12: TxParallel_6 = 6'h32;
+            5'h13: TxParallel_6 = 6'h13;
+            5'h14: TxParallel_6 = 6'h34;
+            5'h15: TxParallel_6 = 6'h15;
+            5'h16: TxParallel_6 = 6'h16;
+            5'h17: TxParallel_6 = 6'h28;
+            5'h18: TxParallel_6 = 6'h0C;
+            5'h19: TxParallel_6 = 6'h19;
+            5'h1A: TxParallel_6 = 6'h1A;
+            5'h1B: TxParallel_6 = 6'h24;
             5'h1C: begin
                 if (TxDataK)
-                    TxParallel_6 = 6'b110000;
+                    TxParallel_6 = 6'h03;
                 else
-                    TxParallel_6 = 6'b001110;
+                    TxParallel_6 = 6'h1C;
             end
-            5'h1D: TxParallel_6 = 6'b010001;
-            5'h1E: TxParallel_6 = 6'b100001;
-            5'h1F: TxParallel_6 = 6'b010100;
+            5'h1D: TxParallel_6 = 6'h22;
+            5'h1E: TxParallel_6 = 6'h21;
+            5'h1F: TxParallel_6 = 6'h0A;
             default: TxParallel_6 = 0;
         endcase
     end else begin
         case (TxParallel_8[4:0])
-            5'h0: TxParallel_6 = 6'b100111;
-            5'h1: TxParallel_6 = 6'b011101;
-            5'h2: TxParallel_6 = 6'b101101;
-            5'h3: TxParallel_6 = 6'b110001;
-            5'h4: TxParallel_6 = 6'b110101;
-            5'h5: TxParallel_6 = 6'b101001;
-            5'h6: TxParallel_6 = 6'b011001;
-            5'h7: TxParallel_6 = 6'b111000;
-            5'h8: TxParallel_6 = 6'b111001;
-            5'h9: TxParallel_6 = 6'b100101;
-            5'hA: TxParallel_6 = 6'b010101;
-            5'hB: TxParallel_6 = 6'b110100;
-            5'hC: TxParallel_6 = 6'b001101;
-            5'hD: TxParallel_6 = 6'b101100;
-            5'hE: TxParallel_6 = 6'b011100;
-            5'hF: TxParallel_6 = 6'b010111;
-            5'h10: TxParallel_6 = 6'b011011;
-            5'h11: TxParallel_6 = 6'b100011;
-            5'h12: TxParallel_6 = 6'b010011;
-            5'h13: TxParallel_6 = 6'b110010;
-            5'h14: TxParallel_6 = 6'b001011;
-            5'h15: TxParallel_6 = 6'b101010;
-            5'h16: TxParallel_6 = 6'b011010;
-            5'h17: TxParallel_6 = 6'b111010;
-            5'h18: TxParallel_6 = 6'b110011;
-            5'h19: TxParallel_6 = 6'b100110;
-            5'h1A: TxParallel_6 = 6'b010110;
-            5'h1B: TxParallel_6 = 6'b110110;
+            5'h00: TxParallel_6 = 6'h39;
+            5'h01: TxParallel_6 = 6'h2E;
+            5'h02: TxParallel_6 = 6'h2D;
+            5'h03: TxParallel_6 = 6'h23;
+            5'h04: TxParallel_6 = 6'h2B;
+            5'h05: TxParallel_6 = 6'h25;
+            5'h06: TxParallel_6 = 6'h26;
+            5'h07: TxParallel_6 = 6'h07;
+            5'h08: TxParallel_6 = 6'h27;
+            5'h09: TxParallel_6 = 6'h29;
+            5'h0A: TxParallel_6 = 6'h2A;
+            5'h0B: TxParallel_6 = 6'h0B;
+            5'h0C: TxParallel_6 = 6'h2C;
+            5'h0D: TxParallel_6 = 6'h0D;
+            5'h0E: TxParallel_6 = 6'h0E;
+            5'h0F: TxParallel_6 = 6'h3A;
+            5'h10: TxParallel_6 = 6'h36;
+            5'h11: TxParallel_6 = 6'h31;
+            5'h12: TxParallel_6 = 6'h32;
+            5'h13: TxParallel_6 = 6'h13;
+            5'h14: TxParallel_6 = 6'h34;
+            5'h15: TxParallel_6 = 6'h15;
+            5'h16: TxParallel_6 = 6'h16;
+            5'h17: TxParallel_6 = 6'h17;
+            5'h18: TxParallel_6 = 6'h33;
+            5'h19: TxParallel_6 = 6'h19;
+            5'h1A: TxParallel_6 = 6'h1A;
+            5'h1B: TxParallel_6 = 6'h1B;
             5'h1C: begin
                 if (TxDataK)
-                    TxParallel_6 = 6'b001111;
+                    TxParallel_6 = 6'h3C;
                 else
-                    TxParallel_6 = 6'b001110;
+                    TxParallel_6 = 6'h1C;
             end
-            5'h1D: TxParallel_6 = 6'b101110;
-            5'h1E: TxParallel_6 = 6'b011110;
-            5'h1F: TxParallel_6 = 6'b101011;
+            5'h1D: TxParallel_6 = 6'h1D;
+            5'h1E: TxParallel_6 = 6'h1E;
+            5'h1F: TxParallel_6 = 6'h35;
             default: TxParallel_6 = 0;
         endcase
     end
@@ -104,61 +104,61 @@ always @(*) begin
     if (TxDataK) begin
         if ((^TxParallel_6) ^ disparity) begin
             case (TxParallel_8[7:5])
-                3'h0: TxParallel_4 = 4'b1011;
-                3'h1: TxParallel_4 = 4'b0110;
-                3'h2: TxParallel_4 = 4'b1010;
-                3'h3: TxParallel_4 = 4'b1100;
-                3'h4: TxParallel_4 = 4'b1101;
-                3'h5: TxParallel_4 = 4'b0101;
-                3'h6: TxParallel_4 = 4'b1001;
-                3'h7: TxParallel_4 = 4'b0111;
+                3'h0: TxParallel_4 = 4'hD;
+                3'h1: TxParallel_4 = 4'h6;
+                3'h2: TxParallel_4 = 4'h5;
+                3'h3: TxParallel_4 = 4'h3;
+                3'h4: TxParallel_4 = 4'hB;
+                3'h5: TxParallel_4 = 4'hA;
+                3'h6: TxParallel_4 = 4'h9;
+                3'h7: TxParallel_4 = 4'hE;
                 default: TxParallel_4 = 0;
             endcase
         end else begin
             case (TxParallel_8[7:5])
-                3'h0: TxParallel_4 = 4'b0100;
-                3'h1: TxParallel_4 = 4'b1001;
-                3'h2: TxParallel_4 = 4'b0101;
-                3'h3: TxParallel_4 = 4'b0011;
-                3'h4: TxParallel_4 = 4'b0010;
-                3'h5: TxParallel_4 = 4'b1010;
-                3'h6: TxParallel_4 = 4'b0110;
-                3'h7: TxParallel_4 = 4'b1000;
+                3'h0: TxParallel_4 = 4'h2;
+                3'h1: TxParallel_4 = 4'h9;
+                3'h2: TxParallel_4 = 4'hA;
+                3'h3: TxParallel_4 = 4'hC;
+                3'h4: TxParallel_4 = 4'h4;
+                3'h5: TxParallel_4 = 4'h5;
+                3'h6: TxParallel_4 = 4'h6;
+                3'h7: TxParallel_4 = 4'h1;
                 default: TxParallel_4 = 0;
             endcase
         end
     end else begin
         if ((^TxParallel_6) ^ disparity) begin
             case (TxParallel_8[7:5])
-                3'h0: TxParallel_4 = 4'b1011;
-                3'h1: TxParallel_4 = 4'b1001;
-                3'h2: TxParallel_4 = 4'b0101;
-                3'h3: TxParallel_4 = 4'b1100;
-                3'h4: TxParallel_4 = 4'b1101;
-                3'h5: TxParallel_4 = 4'b1010;
-                3'h6: TxParallel_4 = 4'b0110;
+                3'h0: TxParallel_4 = 4'hD;
+                3'h1: TxParallel_4 = 4'h9;
+                3'h2: TxParallel_4 = 4'hA;
+                3'h3: TxParallel_4 = 4'h3;
+                3'h4: TxParallel_4 = 4'hB;
+                3'h5: TxParallel_4 = 4'h5;
+                3'h6: TxParallel_4 = 4'h6;
                 3'h7: begin
                     if (TxParallel_8[4:0] == 17 || TxParallel_8[4:0] == 18 || TxParallel_8[4:0] == 20)
-                        TxParallel_4 = 4'b0111;
+                        TxParallel_4 = 4'hE;
                     else
-                        TxParallel_4 = 4'b1110;
+                        TxParallel_4 = 4'h7;
                 end
                 default: TxParallel_4 = 0;
             endcase
         end else begin
             case (TxParallel_8[7:5])
-                3'h0: TxParallel_4 = 4'b0100;
-                3'h1: TxParallel_4 = 4'b1001;
-                3'h2: TxParallel_4 = 4'b0101;
-                3'h3: TxParallel_4 = 4'b0011;
-                3'h4: TxParallel_4 = 4'b0010;
-                3'h5: TxParallel_4 = 4'b1010;
-                3'h6: TxParallel_4 = 4'b0110;
+                3'h0: TxParallel_4 = 4'h2;
+                3'h1: TxParallel_4 = 4'h9;
+                3'h2: TxParallel_4 = 4'hA;
+                3'h3: TxParallel_4 = 4'hC;
+                3'h4: TxParallel_4 = 4'h4;
+                3'h5: TxParallel_4 = 4'h5;
+                3'h6: TxParallel_4 = 4'h6;
                 3'h7: begin
                     if (TxParallel_8[4:0] == 11 || TxParallel_8[4:0] == 13 || TxParallel_8[4:0] == 14)
-                        TxParallel_4 = 4'b1000; 
+                        TxParallel_4 = 4'h1; 
                     else
-                        TxParallel_4 = 4'b0001;
+                        TxParallel_4 = 4'h8;
                 end
                 default: TxParallel_4 = 0;
             endcase
