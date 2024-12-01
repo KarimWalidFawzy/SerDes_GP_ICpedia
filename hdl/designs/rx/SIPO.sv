@@ -2,32 +2,29 @@ module SIPO(
     input BitCLK,
     input Reset,
     output reg [9:0] RxParallel_10,
-    input Serial,
-    input Comma
+    input Serial
 );
-    reg [9:0] TR; // 10-bit shift register
+    reg [9:0] shift_reg; // 10-bit shift register
     reg [3:0] count; // 4-bit counter
+    wire comma;
+     
+    assign comma = (shift_reg == 124) || (shift_reg == 380) || (shift_reg == 387) || (shift_reg == 636) || (shift_reg == 643) || (shift_reg == 899);
 
     always @(posedge BitCLK or negedge Reset) begin
         if (!Reset) begin
-            count <= 4'b0000; // Reset the counter
-            TR <= 10'b0; // Reset the shift register
+            shift_reg <= 10'b0; // Reset the shift register
         end else begin
-            case (count)
-                4'b0000: TR[0] <= Serial;
-                4'b0001: TR[1] <= Serial;
-                4'b0010: TR[2] <= Serial;
-                4'b0011: TR[3] <= Serial;
-                4'b0100: TR[4] <= Serial;
-                4'b0101: TR[5] <= Serial;
-                4'b0110: TR[6] <= Serial;
-                4'b0111: TR[7] <= Serial;
-                4'b1000: TR[8] <= Serial;
-                4'b1001: TR[9] <= Serial;
-                default: ; // No operation for other cases
-            endcase
-            
-            if (count == 4'b1001 || Comma) begin
+            shift_reg <= {Serial, shift_reg[9:1]};
+        end
+    end
+
+    always @(posedge BitCLK, negedge Reset) begin
+        if (!Reset) begin
+            count <= 0; // Reset the counter
+        end else begin
+            if (comma) begin
+                count <= 4'b0001;                
+            end else if (count == 4'b1001) begin
                 count <= 4'b0000; // Reset the counter after reaching 9
             end else begin
                 count <= count + 1; // Increment the counter
@@ -40,7 +37,7 @@ module SIPO(
             RxParallel_10 <= 0;
         end else begin
             if (count == 0) begin
-                RxParallel_10 <= TR;
+                RxParallel_10 <= shift_reg;
             end
         end
     end

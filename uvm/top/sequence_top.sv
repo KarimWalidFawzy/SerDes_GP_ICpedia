@@ -16,7 +16,7 @@ package sequence_top;
 
         virtual task body();
             sequence_item = sequence_item_top::type_id::create("sequence_item");
-            sequence_item.input_data = D_28_1;
+            sequence_item.input_data = S_28_1;
             sequence_item.tx_data_k = 1;
             start_item(sequence_item);
             assert(sequence_item);
