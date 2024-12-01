@@ -19,12 +19,23 @@ switch $design_block {
         set path rx/decoder
     }
 }
-vlog -f $path/runfiles.f +define+$design_block \
+vlog -f $path/runfiles.f +define+$design_block +cover\ 
 
-vsim -voptargs=+acc work.top +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH
+vsim -voptargs=+acc work.top -cover -classdebug -sv_seed 50 +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH 
 
 add wave -position insertpoint \
 sim:/top/$design_block_if/* \
 
 
+coverage save top_tb_tb.ucdb -onexit -du encoder
+
 run -all
+coverage report -output functional_coverage_rpt.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
+quit -sim
+vcover report top_tb_tb.ucdb -details -annotate -all -output code_coverage_rpt.txt
+
+#you can add -option to functional coverage
+#you can add -classdebug in vsim command to access the classes in waveform
+#you can add -uvmcontrol=all  in vsim command in case uvm
+#in windows to create sourcefile.txt use dir /b > sourcefile.txt
+

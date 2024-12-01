@@ -79,9 +79,9 @@ package scoreboard_encoder;
   
 
 
-
     // Select encoding based on current disparity
     if (disparity == -1) begin
+      
       encoded_out[9:6] = encoding_table_4[data_in[7:5]][0]; // RD = -1
     end else begin
       encoded_out[9:6] = encoding_table_4[data_in[7:5]][1]; // RD = +1

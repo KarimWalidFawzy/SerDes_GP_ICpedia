@@ -14,6 +14,7 @@ tx/encoder/driver_encoder.sv
 tx/encoder/monitor_encoder.sv
 agent_block.sv
 tx/encoder/scoreboard_encoder.sv
+tx/encoder/coverage_encoder.sv
 env_block.sv
 test.sv
 top.sv

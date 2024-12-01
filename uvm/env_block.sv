@@ -4,6 +4,7 @@ package env_block;
     import agent_block::*;
     `ifdef ENCODER
         import scoreboard_encoder::*;
+        import coverage_encoder ::*;
     `elsif PISO
         import scoreboard_piso::*;
     `elsif SIPO
@@ -19,6 +20,7 @@ package env_block;
         agent_block agent_block_i;
         `ifdef ENCODER
             scoreboard_encoder scoreboard_i;
+            coverage_encoder coverage_i;
         `elsif PISO
             scoreboard_piso scoreboard_i;
         `elsif SIPO
@@ -36,6 +38,7 @@ package env_block;
             agent_block_i = agent_block::type_id::create("agent_block_i", this);
             `ifdef ENCODER
                 scoreboard_i = scoreboard_encoder::type_id::create("scoreboard_i", this);
+                coverage_i = coverage_encoder::type_id::create("coverage_i", this);
             `elsif PISO
                 scoreboard_i = scoreboard_piso::type_id::create("scoreboard_i", this);
             `elsif SIPO
@@ -47,6 +50,7 @@ package env_block;
 
         function void connect_phase(uvm_phase phase);
             agent_block_i.monitor_block_i.item_collected_port.connect(scoreboard_i.scoreboard_block);
+            agent_block_i.monitor_block_i.item_collected_port.connect(coverage_i.cov_export_in);
         endfunction : connect_phase
         
     endclass 
