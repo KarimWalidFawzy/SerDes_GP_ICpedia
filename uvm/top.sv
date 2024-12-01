@@ -52,10 +52,9 @@ module top();
         sipo_if sipo_if (BitCLK);
         SIPO sipo(
             .BitCLK(BitCLK),
-            .Reset(Reset),
+            .Reset(sipo_if.Reset),
             .Serial(sipo_if.Serial),
-            .RxParallel_10(sipo_if.RxParallel_10),
-            .Comma(sipo_if.Comma)
+            .RxParallel_10(sipo_if.RxParallel_10)
         );
         bind SIPO assertions_sipo assertions_sipo_i(sipo_if.DUT);
     `elsif DECODER

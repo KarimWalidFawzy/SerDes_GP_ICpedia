@@ -22,9 +22,14 @@ switch $design_block {
 
 vlog -f $path/runfiles.f +define+$design_block \
 
-vsim -voptargs=+acc work.top +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH
+vsim -voptargs=+acc work.top +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH -sv_seed 1
 
-add wave -position insertpoint \
-sim:/top/$design_block_if/* \
+add wave /top/$design_block_if/*
+switch $design_block {
+    SIPO {
+        add wave /top/sipo/assertions_sipo_i/comma_check_assert
+        add wave /top/sipo/assertions_sipo_i/comma_check_cover
+    }
+}
 
 run -all
