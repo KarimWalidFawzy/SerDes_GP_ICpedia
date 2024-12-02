@@ -7,3 +7,5 @@ work/
 *.mpf
 *.mpf_new
 *.vstf
+*.ucdb
+*.txt

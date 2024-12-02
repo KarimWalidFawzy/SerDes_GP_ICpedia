@@ -7,8 +7,10 @@ package scoreboard_encoder;
     class scoreboard_encoder extends uvm_scoreboard;
         `uvm_component_utils(scoreboard_encoder)
          
+        int disparity = -1;
         int correct_count;
         int error_count;
+
         `uvm_analysis_imp_decl(_encoder)
         uvm_analysis_imp_encoder #(sequence_item_encoder, scoreboard_encoder) scoreboard_block;
         sequence_item_encoder encoder_q[$];
@@ -40,7 +42,6 @@ package scoreboard_encoder;
     input  bit [7:0] data_in,
     output bit [9:0] encoded_out
   );
-   int disparity = -1;
     int ones_count, zeros_count;
     int  ones_count_2 ,zeros_count_2;
 
@@ -114,12 +115,12 @@ package scoreboard_encoder;
 
     // Select encoding based on current disparity
     if (disparity == -1) begin
-      if (data_in[4:0]==17 ||data_in[4:0]==18 || data_in[4:0]==20) begin
+      if (data_in[7:5] == 7 && (data_in[4:0] == 17 || data_in[4:0] == 18 || data_in[4:0] == 20)) begin
         encoded_out[9:6] = 4'b1110;
       end
      else encoded_out[9:6] = encoding_table_4[data_in[7:5]][0]; // RD = -1
     end else begin
-      if (data_in[4:0]==11 ||data_in[4:0]==13 || data_in[4:0]==14) begin
+      if (data_in[7:5] == 7 && (data_in[4:0] == 11 || data_in[4:0] == 13 || data_in[4:0] == 14)) begin
         encoded_out[9:6] = 4'b0001;
       end
       else encoded_out[9:6] = encoding_table_4[data_in[7:5]][1]; // RD = +1
@@ -137,7 +138,6 @@ package scoreboard_encoder;
     input  bit [7:0] data_in,
     output bit [9:0] encoded_out
   );
-   int disparity = -1;
     int ones_count, zeros_count;
     int  ones_count_2 ,zeros_count_2;
 
