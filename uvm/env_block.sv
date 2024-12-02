@@ -50,7 +50,8 @@ package env_block;
 
         function void connect_phase(uvm_phase phase);
             agent_block_i.monitor_block_i.item_collected_port.connect(scoreboard_i.scoreboard_block);
-            agent_block_i.monitor_block_i.item_collected_port.connect(coverage_i.cov_export_in);
+            
+           // agent_block_i.monitor_block_i.item_collected_port.connect(coverage_i.cov_export_in);
         endfunction : connect_phase
         
     endclass 

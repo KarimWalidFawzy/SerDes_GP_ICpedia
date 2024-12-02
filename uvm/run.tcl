@@ -1,7 +1,7 @@
 
 #Change this variable to one of the following values
 #TOP ENCODER PISO SIPO DECODER
-set design_block ENCODER
+set design_block DECODER
 
 set design_block_if [string cat [string tolower $design_block] _if]
 set path top
@@ -25,7 +25,6 @@ vsim -voptargs=+acc work.top -cover -classdebug -sv_seed 50 +UVM_TESTNAME=test +
 
 add wave -position insertpoint \
 sim:/top/$design_block_if/* \
-
 
 coverage save top_tb_tb.ucdb -onexit 
 

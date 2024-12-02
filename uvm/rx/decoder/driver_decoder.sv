@@ -31,10 +31,7 @@ package driver_decoder;
 
         virtual task drive_item(sequence_item_decoder rhs);
             @(negedge vif.BitCLK_10);
-            //*************************//
-            // TODO: Drive Inputs Here //
-            //*************************//
-            // example: vif.signal = rhs.signal;
+            vif.RxParallel_10 = rhs.RxParallel_10;
         endtask : drive_item
 
     endclass

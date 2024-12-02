@@ -5,22 +5,15 @@ package sequence_item_decoder;
     
     class sequence_item_decoder extends uvm_sequence_item ;
         `uvm_object_utils (sequence_item_decoder)
+         rand bit [9:0]RxParallel_10  ;
+         bit [7:0] RxParallel_8 ;
+        bit RxDataK;
 
-        //***************************//
-        // TODO: Define Signals Here //
-        //***************************//
-
+        
         function new (string name = "sequence_item_decoder");
             super.new(name);
         endfunction : new
 
-        //*******************************//
-        // TODO: Define Constraints Here //
-        //*******************************//
-
-        //*******************************//
-        // TODO: Define Covergroups Here //
-        //*******************************//
 
     endclass
 endpackage

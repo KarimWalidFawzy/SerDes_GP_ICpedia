@@ -33,10 +33,10 @@ package monitor_decoder;
 		virtual task sample_item();
 			sequence_item_decoder resp = sequence_item_decoder::type_id::create("resp");            
 			@(posedge vif.BitCLK_10);
-            //***************************//
-            // TODO: Sample Outputs Here //
-            //***************************//
-			// example: resp.signal = vif.signal
+
+            resp.RxDataK = vif.RxDataK;
+			resp.RxParallel_10=vif.RxParallel_10;
+			resp.RxParallel_8=vif.RxParallel_10;
 			item_collected_port.write(resp);
 		endtask : sample_item
 
