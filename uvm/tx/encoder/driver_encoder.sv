@@ -35,7 +35,7 @@ package driver_encoder;
 
         virtual task drive_item(sequence_item_encoder rhs);
             @(negedge vif.BitCLK_10);
-            vif.TxDataK=0;
+            vif.TxDataK=rhs.TxDataK;
             vif.TxParallel_8 = rhs.input_data;
 
         endtask : drive_item

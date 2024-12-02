@@ -37,9 +37,9 @@ import sequence_item_encoder::*;
 		virtual task run_phase(uvm_phase phase);
 			super.run_phase(phase);
 			forever begin
-				`uvm_info("RUN_COV", "WAITING for Inputs Coverage Item", UVM_HIGH)
+
 				cov_fifo_in.get(cov_item_in);
-				`uvm_info("RUN_COV", cov_item_in.sprint(), UVM_HIGH)
+				
 				cg.sample();
 			end
 		endtask : run_phase

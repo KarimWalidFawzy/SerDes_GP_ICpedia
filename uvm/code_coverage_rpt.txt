@@ -1,0 +1,64 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /\top#encoder /assertions_encoder_i
+=== Design Unit: work.assertions_encoder
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       2         2         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\top#encoder /assertions_encoder_i/assert_five_consecutive_bits
+                     tx/encoder/assertions_encoder.sv(45)
+                                                        0          1
+/\top#encoder /assertions_encoder_i/assert_disparity
+                     tx/encoder/assertions_encoder.sv(48)
+                                                        0          1
+
+Directive Coverage:
+    Directives                       2         2         0   100.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\top#encoder /assertions_encoder_i/assert_five_consecutive_bits_cover 
+                                         assertions_encoder Verilog  SVA  tx/encoder/assertions_encoder.sv(51)
+                                                                               134 Covered   
+/\top#encoder /assertions_encoder_i/assert_disparity_cover 
+                                         assertions_encoder Verilog  SVA  tx/encoder/assertions_encoder.sv(52)
+                                                                               150 Covered   
+
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\top#encoder /assertions_encoder_i/assert_five_consecutive_bits_cover 
+                                         assertions_encoder Verilog  SVA  tx/encoder/assertions_encoder.sv(51)
+                                                                               134 Covered   
+/\top#encoder /assertions_encoder_i/assert_disparity_cover 
+                                         assertions_encoder Verilog  SVA  tx/encoder/assertions_encoder.sv(52)
+                                                                               150 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 2
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\top#encoder /assertions_encoder_i/assert_five_consecutive_bits
+                     tx/encoder/assertions_encoder.sv(45)
+                                                        0          1
+/\top#encoder /assertions_encoder_i/assert_disparity
+                     tx/encoder/assertions_encoder.sv(48)
+                                                        0          1
+
+Total Coverage By Instance (filtered view): 100.00%
+

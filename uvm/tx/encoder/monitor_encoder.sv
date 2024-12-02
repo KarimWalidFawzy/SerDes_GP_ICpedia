@@ -36,6 +36,7 @@ package monitor_encoder;
 
 			resp.input_data=vif.TxParallel_8;
 			resp.output_data=vif.TxParallel_10;
+			resp.TxDataK=vif.TxDataK;
 			item_collected_port.write(resp);
 		endtask : sample_item
 

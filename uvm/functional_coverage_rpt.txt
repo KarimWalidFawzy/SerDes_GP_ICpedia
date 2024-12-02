@@ -3,79 +3,79 @@ COVERGROUP COVERAGE:
 Covergroup                                             Metric       Goal       Bins    Status               
                                                                                                          
 ----------------------------------------------------------------------------------------------------------
- TYPE /coverage_encoder/coverage_encoder/cg             2.73%        100          -    Uncovered            
-    covered/total bins:                                     7        256          -                      
-    missing/total bins:                                   249        256          -                      
-    % Hit:                                              2.73%        100          -                      
-    Coverpoint symbols                                  2.73%        100          -    Uncovered            
-        covered/total bins:                                 7        256          -                      
-        missing/total bins:                               249        256          -                      
-        % Hit:                                          2.73%        100          -                      
-        bin auto[S_0_0]                                    10          1          -    Covered              
-        bin auto[S_1_0]                                     7          1          -    Covered              
+ TYPE /coverage_encoder/coverage_encoder/cg            32.81%        100          -    Uncovered            
+    covered/total bins:                                    84        256          -                      
+    missing/total bins:                                   172        256          -                      
+    % Hit:                                             32.81%        100          -                      
+    Coverpoint symbols                                 32.81%        100          -    Uncovered            
+        covered/total bins:                                84        256          -                      
+        missing/total bins:                               172        256          -                      
+        % Hit:                                         32.81%        100          -                      
+        bin auto[S_0_0]                                     3          1          -    Covered              
+        bin auto[S_1_0]                                     1          1          -    Covered              
         bin auto[S_2_0]                                     0          1          -    ZERO                 
         bin auto[S_3_0]                                     0          1          -    ZERO                 
         bin auto[S_4_0]                                     0          1          -    ZERO                 
         bin auto[S_5_0]                                     0          1          -    ZERO                 
-        bin auto[S_6_0]                                     0          1          -    ZERO                 
+        bin auto[S_6_0]                                     1          1          -    Covered              
         bin auto[S_7_0]                                     0          1          -    ZERO                 
-        bin auto[S_8_0]                                     0          1          -    ZERO                 
-        bin auto[S_9_0]                                     0          1          -    ZERO                 
+        bin auto[S_8_0]                                     1          1          -    Covered              
+        bin auto[S_9_0]                                     1          1          -    Covered              
         bin auto[S_10_0]                                    0          1          -    ZERO                 
         bin auto[S_11_0]                                    0          1          -    ZERO                 
         bin auto[S_12_0]                                    0          1          -    ZERO                 
         bin auto[S_13_0]                                    0          1          -    ZERO                 
         bin auto[S_14_0]                                    0          1          -    ZERO                 
-        bin auto[S_15_0]                                    0          1          -    ZERO                 
+        bin auto[S_15_0]                                    1          1          -    Covered              
         bin auto[S_16_0]                                    0          1          -    ZERO                 
-        bin auto[S_17_0]                                    0          1          -    ZERO                 
+        bin auto[S_17_0]                                    1          1          -    Covered              
         bin auto[S_18_0]                                    0          1          -    ZERO                 
         bin auto[S_19_0]                                    0          1          -    ZERO                 
         bin auto[S_20_0]                                    0          1          -    ZERO                 
-        bin auto[S_21_0]                                    0          1          -    ZERO                 
-        bin auto[S_22_0]                                    0          1          -    ZERO                 
+        bin auto[S_21_0]                                    1          1          -    Covered              
+        bin auto[S_22_0]                                    2          1          -    Covered              
         bin auto[S_23_0]                                    0          1          -    ZERO                 
-        bin auto[S_24_0]                                    0          1          -    ZERO                 
+        bin auto[S_24_0]                                    1          1          -    Covered              
         bin auto[S_25_0]                                    0          1          -    ZERO                 
         bin auto[S_26_0]                                    0          1          -    ZERO                 
         bin auto[S_27_0]                                    0          1          -    ZERO                 
-        bin auto[S_28_0]                                    0          1          -    ZERO                 
+        bin auto[S_28_0]                                    3          1          -    Covered              
         bin auto[S_29_0]                                    0          1          -    ZERO                 
-        bin auto[S_30_0]                                    0          1          -    ZERO                 
+        bin auto[S_30_0]                                    1          1          -    Covered              
         bin auto[S_31_0]                                    0          1          -    ZERO                 
-        bin auto[S_0_1]                                     5          1          -    Covered              
+        bin auto[S_0_1]                                     1          1          -    Covered              
         bin auto[S_1_1]                                     0          1          -    ZERO                 
         bin auto[S_2_1]                                     0          1          -    ZERO                 
         bin auto[S_3_1]                                     0          1          -    ZERO                 
         bin auto[S_4_1]                                     0          1          -    ZERO                 
-        bin auto[S_5_1]                                     0          1          -    ZERO                 
-        bin auto[S_6_1]                                     0          1          -    ZERO                 
+        bin auto[S_5_1]                                     1          1          -    Covered              
+        bin auto[S_6_1]                                     1          1          -    Covered              
         bin auto[S_7_1]                                     0          1          -    ZERO                 
         bin auto[S_8_1]                                     0          1          -    ZERO                 
-        bin auto[S_9_1]                                     0          1          -    ZERO                 
+        bin auto[S_9_1]                                     1          1          -    Covered              
         bin auto[S_10_1]                                    0          1          -    ZERO                 
         bin auto[S_11_1]                                    0          1          -    ZERO                 
-        bin auto[S_12_1]                                    0          1          -    ZERO                 
+        bin auto[S_12_1]                                    1          1          -    Covered              
         bin auto[S_13_1]                                    0          1          -    ZERO                 
-        bin auto[S_14_1]                                    0          1          -    ZERO                 
+        bin auto[S_14_1]                                    1          1          -    Covered              
         bin auto[S_15_1]                                    0          1          -    ZERO                 
-        bin auto[S_16_1]                                    0          1          -    ZERO                 
+        bin auto[S_16_1]                                    1          1          -    Covered              
         bin auto[S_17_1]                                    0          1          -    ZERO                 
         bin auto[S_18_1]                                    0          1          -    ZERO                 
-        bin auto[S_19_1]                                    0          1          -    ZERO                 
+        bin auto[S_19_1]                                    2          1          -    Covered              
         bin auto[S_20_1]                                    0          1          -    ZERO                 
-        bin auto[S_21_1]                                    0          1          -    ZERO                 
+        bin auto[S_21_1]                                    1          1          -    Covered              
         bin auto[S_22_1]                                    0          1          -    ZERO                 
-        bin auto[S_23_1]                                    0          1          -    ZERO                 
+        bin auto[S_23_1]                                    1          1          -    Covered              
         bin auto[S_24_1]                                    0          1          -    ZERO                 
         bin auto[S_25_1]                                    0          1          -    ZERO                 
-        bin auto[S_26_1]                                    0          1          -    ZERO                 
+        bin auto[S_26_1]                                    1          1          -    Covered              
         bin auto[S_27_1]                                    0          1          -    ZERO                 
-        bin auto[S_28_1]                                    0          1          -    ZERO                 
+        bin auto[S_28_1]                                    4          1          -    Covered              
         bin auto[S_29_1]                                    0          1          -    ZERO                 
-        bin auto[S_30_1]                                    0          1          -    ZERO                 
-        bin auto[S_31_1]                                    0          1          -    ZERO                 
-        bin auto[S_0_2]                                     8          1          -    Covered              
+        bin auto[S_30_1]                                    3          1          -    Covered              
+        bin auto[S_31_1]                                    2          1          -    Covered              
+        bin auto[S_0_2]                                     1          1          -    Covered              
         bin auto[S_1_2]                                     0          1          -    ZERO                 
         bin auto[S_2_2]                                     0          1          -    ZERO                 
         bin auto[S_3_2]                                     0          1          -    ZERO                 
@@ -83,9 +83,9 @@ Covergroup                                             Metric       Goal       B
         bin auto[S_5_2]                                     0          1          -    ZERO                 
         bin auto[S_6_2]                                     0          1          -    ZERO                 
         bin auto[S_7_2]                                     0          1          -    ZERO                 
-        bin auto[S_8_2]                                     0          1          -    ZERO                 
+        bin auto[S_8_2]                                     1          1          -    Covered              
         bin auto[S_9_2]                                     0          1          -    ZERO                 
-        bin auto[S_10_2]                                    0          1          -    ZERO                 
+        bin auto[S_10_2]                                    1          1          -    Covered              
         bin auto[S_11_2]                                    0          1          -    ZERO                 
         bin auto[S_12_2]                                    0          1          -    ZERO                 
         bin auto[S_13_2]                                    0          1          -    ZERO                 
@@ -94,60 +94,60 @@ Covergroup                                             Metric       Goal       B
         bin auto[S_16_2]                                    0          1          -    ZERO                 
         bin auto[S_17_2]                                    0          1          -    ZERO                 
         bin auto[S_18_2]                                    0          1          -    ZERO                 
-        bin auto[S_19_2]                                    0          1          -    ZERO                 
+        bin auto[S_19_2]                                    1          1          -    Covered              
         bin auto[S_20_2]                                    0          1          -    ZERO                 
         bin auto[S_21_2]                                    0          1          -    ZERO                 
         bin auto[S_22_2]                                    0          1          -    ZERO                 
-        bin auto[S_23_2]                                    0          1          -    ZERO                 
+        bin auto[S_23_2]                                    2          1          -    Covered              
         bin auto[S_24_2]                                    0          1          -    ZERO                 
         bin auto[S_25_2]                                    0          1          -    ZERO                 
         bin auto[S_26_2]                                    0          1          -    ZERO                 
         bin auto[S_27_2]                                    0          1          -    ZERO                 
-        bin auto[S_28_2]                                    0          1          -    ZERO                 
-        bin auto[S_29_2]                                    0          1          -    ZERO                 
-        bin auto[S_30_2]                                    0          1          -    ZERO                 
+        bin auto[S_28_2]                                    9          1          -    Covered              
+        bin auto[S_29_2]                                    2          1          -    Covered              
+        bin auto[S_30_2]                                    2          1          -    Covered              
         bin auto[S_31_2]                                    0          1          -    ZERO                 
         bin auto[S_0_3]                                     0          1          -    ZERO                 
-        bin auto[S_1_3]                                     4          1          -    Covered              
-        bin auto[S_2_3]                                     8          1          -    Covered              
-        bin auto[S_3_3]                                     9          1          -    Covered              
+        bin auto[S_1_3]                                     0          1          -    ZERO                 
+        bin auto[S_2_3]                                     0          1          -    ZERO                 
+        bin auto[S_3_3]                                     0          1          -    ZERO                 
         bin auto[S_4_3]                                     0          1          -    ZERO                 
-        bin auto[S_5_3]                                     0          1          -    ZERO                 
-        bin auto[S_6_3]                                     0          1          -    ZERO                 
+        bin auto[S_5_3]                                     1          1          -    Covered              
+        bin auto[S_6_3]                                     1          1          -    Covered              
         bin auto[S_7_3]                                     0          1          -    ZERO                 
-        bin auto[S_8_3]                                     0          1          -    ZERO                 
+        bin auto[S_8_3]                                     1          1          -    Covered              
         bin auto[S_9_3]                                     0          1          -    ZERO                 
-        bin auto[S_10_3]                                    0          1          -    ZERO                 
+        bin auto[S_10_3]                                    1          1          -    Covered              
         bin auto[S_11_3]                                    0          1          -    ZERO                 
         bin auto[S_12_3]                                    0          1          -    ZERO                 
-        bin auto[S_13_3]                                    0          1          -    ZERO                 
+        bin auto[S_13_3]                                    1          1          -    Covered              
         bin auto[S_14_3]                                    0          1          -    ZERO                 
         bin auto[S_15_3]                                    0          1          -    ZERO                 
         bin auto[S_16_3]                                    0          1          -    ZERO                 
-        bin auto[S_17_3]                                    0          1          -    ZERO                 
+        bin auto[S_17_3]                                    1          1          -    Covered              
         bin auto[S_18_3]                                    0          1          -    ZERO                 
         bin auto[S_19_3]                                    0          1          -    ZERO                 
-        bin auto[S_20_3]                                    0          1          -    ZERO                 
+        bin auto[S_20_3]                                    1          1          -    Covered              
         bin auto[S_21_3]                                    0          1          -    ZERO                 
         bin auto[S_22_3]                                    0          1          -    ZERO                 
         bin auto[S_23_3]                                    0          1          -    ZERO                 
-        bin auto[S_24_3]                                    0          1          -    ZERO                 
+        bin auto[S_24_3]                                    1          1          -    Covered              
         bin auto[S_25_3]                                    0          1          -    ZERO                 
         bin auto[S_26_3]                                    0          1          -    ZERO                 
         bin auto[S_27_3]                                    0          1          -    ZERO                 
-        bin auto[S_28_3]                                    0          1          -    ZERO                 
+        bin auto[S_28_3]                                    5          1          -    Covered              
         bin auto[S_29_3]                                    0          1          -    ZERO                 
-        bin auto[S_30_3]                                    0          1          -    ZERO                 
+        bin auto[S_30_3]                                    1          1          -    Covered              
         bin auto[S_31_3]                                    0          1          -    ZERO                 
         bin auto[S_0_4]                                     0          1          -    ZERO                 
-        bin auto[S_1_4]                                     0          1          -    ZERO                 
+        bin auto[S_1_4]                                     1          1          -    Covered              
         bin auto[S_2_4]                                     0          1          -    ZERO                 
         bin auto[S_3_4]                                     0          1          -    ZERO                 
         bin auto[S_4_4]                                     0          1          -    ZERO                 
-        bin auto[S_5_4]                                     0          1          -    ZERO                 
+        bin auto[S_5_4]                                     2          1          -    Covered              
         bin auto[S_6_4]                                     0          1          -    ZERO                 
-        bin auto[S_7_4]                                     0          1          -    ZERO                 
-        bin auto[S_8_4]                                     0          1          -    ZERO                 
+        bin auto[S_7_4]                                     1          1          -    Covered              
+        bin auto[S_8_4]                                     2          1          -    Covered              
         bin auto[S_9_4]                                     0          1          -    ZERO                 
         bin auto[S_10_4]                                    0          1          -    ZERO                 
         bin auto[S_11_4]                                    0          1          -    ZERO                 
@@ -165,26 +165,26 @@ Covergroup                                             Metric       Goal       B
         bin auto[S_23_4]                                    0          1          -    ZERO                 
         bin auto[S_24_4]                                    0          1          -    ZERO                 
         bin auto[S_25_4]                                    0          1          -    ZERO                 
-        bin auto[S_26_4]                                    0          1          -    ZERO                 
+        bin auto[S_26_4]                                    1          1          -    Covered              
         bin auto[S_27_4]                                    0          1          -    ZERO                 
-        bin auto[S_28_4]                                    0          1          -    ZERO                 
+        bin auto[S_28_4]                                    3          1          -    Covered              
         bin auto[S_29_4]                                    0          1          -    ZERO                 
-        bin auto[S_30_4]                                    0          1          -    ZERO                 
+        bin auto[S_30_4]                                    1          1          -    Covered              
         bin auto[S_31_4]                                    0          1          -    ZERO                 
         bin auto[S_0_5]                                     0          1          -    ZERO                 
-        bin auto[S_1_5]                                     0          1          -    ZERO                 
+        bin auto[S_1_5]                                     1          1          -    Covered              
         bin auto[S_2_5]                                     0          1          -    ZERO                 
         bin auto[S_3_5]                                     0          1          -    ZERO                 
-        bin auto[S_4_5]                                     0          1          -    ZERO                 
-        bin auto[S_5_5]                                     0          1          -    ZERO                 
+        bin auto[S_4_5]                                     1          1          -    Covered              
+        bin auto[S_5_5]                                     1          1          -    Covered              
         bin auto[S_6_5]                                     0          1          -    ZERO                 
-        bin auto[S_7_5]                                     0          1          -    ZERO                 
+        bin auto[S_7_5]                                     1          1          -    Covered              
         bin auto[S_8_5]                                     0          1          -    ZERO                 
-        bin auto[S_9_5]                                     0          1          -    ZERO                 
-        bin auto[S_10_5]                                    0          1          -    ZERO                 
+        bin auto[S_9_5]                                     1          1          -    Covered              
+        bin auto[S_10_5]                                    1          1          -    Covered              
         bin auto[S_11_5]                                    0          1          -    ZERO                 
         bin auto[S_12_5]                                    0          1          -    ZERO                 
-        bin auto[S_13_5]                                    0          1          -    ZERO                 
+        bin auto[S_13_5]                                    1          1          -    Covered              
         bin auto[S_14_5]                                    0          1          -    ZERO                 
         bin auto[S_15_5]                                    0          1          -    ZERO                 
         bin auto[S_16_5]                                    0          1          -    ZERO                 
@@ -193,50 +193,50 @@ Covergroup                                             Metric       Goal       B
         bin auto[S_19_5]                                    0          1          -    ZERO                 
         bin auto[S_20_5]                                    0          1          -    ZERO                 
         bin auto[S_21_5]                                    0          1          -    ZERO                 
-        bin auto[S_22_5]                                    0          1          -    ZERO                 
-        bin auto[S_23_5]                                    0          1          -    ZERO                 
+        bin auto[S_22_5]                                    1          1          -    Covered              
+        bin auto[S_23_5]                                    1          1          -    Covered              
         bin auto[S_24_5]                                    0          1          -    ZERO                 
         bin auto[S_25_5]                                    0          1          -    ZERO                 
         bin auto[S_26_5]                                    0          1          -    ZERO                 
-        bin auto[S_27_5]                                    0          1          -    ZERO                 
-        bin auto[S_28_5]                                    0          1          -    ZERO                 
+        bin auto[S_27_5]                                    2          1          -    Covered              
+        bin auto[S_28_5]                                    8          1          -    Covered              
         bin auto[S_29_5]                                    0          1          -    ZERO                 
         bin auto[S_30_5]                                    0          1          -    ZERO                 
-        bin auto[S_31_5]                                    0          1          -    ZERO                 
+        bin auto[S_31_5]                                    1          1          -    Covered              
         bin auto[S_0_6]                                     0          1          -    ZERO                 
         bin auto[S_1_6]                                     0          1          -    ZERO                 
         bin auto[S_2_6]                                     0          1          -    ZERO                 
         bin auto[S_3_6]                                     0          1          -    ZERO                 
         bin auto[S_4_6]                                     0          1          -    ZERO                 
         bin auto[S_5_6]                                     0          1          -    ZERO                 
-        bin auto[S_6_6]                                     0          1          -    ZERO                 
+        bin auto[S_6_6]                                     1          1          -    Covered              
         bin auto[S_7_6]                                     0          1          -    ZERO                 
-        bin auto[S_8_6]                                     0          1          -    ZERO                 
+        bin auto[S_8_6]                                     1          1          -    Covered              
         bin auto[S_9_6]                                     0          1          -    ZERO                 
-        bin auto[S_10_6]                                    0          1          -    ZERO                 
+        bin auto[S_10_6]                                    1          1          -    Covered              
         bin auto[S_11_6]                                    0          1          -    ZERO                 
         bin auto[S_12_6]                                    0          1          -    ZERO                 
         bin auto[S_13_6]                                    0          1          -    ZERO                 
         bin auto[S_14_6]                                    0          1          -    ZERO                 
         bin auto[S_15_6]                                    0          1          -    ZERO                 
         bin auto[S_16_6]                                    0          1          -    ZERO                 
-        bin auto[S_17_6]                                    0          1          -    ZERO                 
+        bin auto[S_17_6]                                    1          1          -    Covered              
         bin auto[S_18_6]                                    0          1          -    ZERO                 
-        bin auto[S_19_6]                                    0          1          -    ZERO                 
-        bin auto[S_20_6]                                    0          1          -    ZERO                 
+        bin auto[S_19_6]                                    1          1          -    Covered              
+        bin auto[S_20_6]                                    1          1          -    Covered              
         bin auto[S_21_6]                                    0          1          -    ZERO                 
-        bin auto[S_22_6]                                    0          1          -    ZERO                 
-        bin auto[S_23_6]                                    0          1          -    ZERO                 
+        bin auto[S_22_6]                                    2          1          -    Covered              
+        bin auto[S_23_6]                                    1          1          -    Covered              
         bin auto[S_24_6]                                    0          1          -    ZERO                 
         bin auto[S_25_6]                                    0          1          -    ZERO                 
         bin auto[S_26_6]                                    0          1          -    ZERO                 
-        bin auto[S_27_6]                                    0          1          -    ZERO                 
-        bin auto[S_28_6]                                    0          1          -    ZERO                 
+        bin auto[S_27_6]                                    1          1          -    Covered              
+        bin auto[S_28_6]                                    6          1          -    Covered              
         bin auto[S_29_6]                                    0          1          -    ZERO                 
         bin auto[S_30_6]                                    0          1          -    ZERO                 
         bin auto[S_31_6]                                    0          1          -    ZERO                 
         bin auto[S_0_7]                                     0          1          -    ZERO                 
-        bin auto[S_1_7]                                     0          1          -    ZERO                 
+        bin auto[S_1_7]                                     1          1          -    Covered              
         bin auto[S_2_7]                                     0          1          -    ZERO                 
         bin auto[S_3_7]                                     0          1          -    ZERO                 
         bin auto[S_4_7]                                     0          1          -    ZERO                 
@@ -248,27 +248,27 @@ Covergroup                                             Metric       Goal       B
         bin auto[S_10_7]                                    0          1          -    ZERO                 
         bin auto[S_11_7]                                    0          1          -    ZERO                 
         bin auto[S_12_7]                                    0          1          -    ZERO                 
-        bin auto[S_13_7]                                    0          1          -    ZERO                 
+        bin auto[S_13_7]                                    1          1          -    Covered              
         bin auto[S_14_7]                                    0          1          -    ZERO                 
         bin auto[S_15_7]                                    0          1          -    ZERO                 
         bin auto[S_16_7]                                    0          1          -    ZERO                 
-        bin auto[S_17_7]                                    0          1          -    ZERO                 
-        bin auto[S_18_7]                                    0          1          -    ZERO                 
-        bin auto[S_19_7]                                    0          1          -    ZERO                 
+        bin auto[S_17_7]                                    1          1          -    Covered              
+        bin auto[S_18_7]                                    1          1          -    Covered              
+        bin auto[S_19_7]                                    1          1          -    Covered              
         bin auto[S_20_7]                                    0          1          -    ZERO                 
         bin auto[S_21_7]                                    0          1          -    ZERO                 
         bin auto[S_22_7]                                    0          1          -    ZERO                 
-        bin auto[S_23_7]                                    0          1          -    ZERO                 
+        bin auto[S_23_7]                                    6          1          -    Covered              
         bin auto[S_24_7]                                    0          1          -    ZERO                 
-        bin auto[S_25_7]                                    0          1          -    ZERO                 
+        bin auto[S_25_7]                                    1          1          -    Covered              
         bin auto[S_26_7]                                    0          1          -    ZERO                 
-        bin auto[S_27_7]                                    0          1          -    ZERO                 
-        bin auto[S_28_7]                                    0          1          -    ZERO                 
-        bin auto[S_29_7]                                    0          1          -    ZERO                 
-        bin auto[S_30_7]                                    0          1          -    ZERO                 
+        bin auto[S_27_7]                                    3          1          -    Covered              
+        bin auto[S_28_7]                                    6          1          -    Covered              
+        bin auto[S_29_7]                                   11          1          -    Covered              
+        bin auto[S_30_7]                                    1          1          -    Covered              
         bin auto[S_31_7]                                    0          1          -    ZERO                 
 
-TOTAL COVERGROUP COVERAGE: 2.73%  COVERGROUP TYPES: 1
+TOTAL COVERGROUP COVERAGE: 32.81%  COVERGROUP TYPES: 1
 
 DIRECTIVE COVERAGE:
 --------------------------------------------------------------------------------------------
@@ -277,9 +277,9 @@ Name                                     Design Design   Lang File(Line)      Hi
 --------------------------------------------------------------------------------------------
 /top/encoder/assertions_encoder_i/assert_five_consecutive_bits_cover 
                                          assertions_encoder Verilog  SVA  tx/encoder/assertions_encoder.sv(51)
-                                                                                50 Covered   
+                                                                               134 Covered   
 /top/encoder/assertions_encoder_i/assert_disparity_cover 
                                          assertions_encoder Verilog  SVA  tx/encoder/assertions_encoder.sv(52)
-                                                                                50 Covered   
+                                                                               150 Covered   
 
 TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 2

@@ -9,32 +9,26 @@ package sequence_item_encoder;
         rand bit TxDataK;
         bit[9:0] output_data ;
 
-
-
-
-        //***************************//
-        // TODO: Define Signals Here //
-        //***************************//
-
         function new (string name = "sequence_item_encoder");
             super.new(name);
         endfunction : new
   constraint tx_data_k_const {
-    TxDataK dist {1:=15 ,0:=85};
+    TxDataK dist {1:=30 ,0:=40};
         }
-        //add constraint for control data with tx data k
-        constraint input_data_temp_constraint {
-             input_data inside {S_0_0,S_0_1,S_0_2,S_1_3,S_2_3,S_1_0,S_3_3};  
-        }
-   
-
-        //*******************************//
-        // TODO: Define Constraints Here //
-        //*******************************//
-
-        //*******************************//
-        // TODO: Define Covergroups Here //
-        //*******************************//
-
+        constraint  k_const { if(TxDataK == 1) input_data inside {S_28_0 ,
+        S_28_1 ,
+        S_28_2 ,
+        S_28_3 ,
+        S_28_4 ,
+        S_28_5 ,
+        S_28_6,
+        S_23_7 ,
+        S_27_7 ,
+        S_28_7 ,
+        S_29_7 ,
+        S_30_7 }; 
+      }
+        
+        
     endclass
 endpackage

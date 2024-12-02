@@ -23,9 +23,12 @@ package scoreboard_encoder;
 
         virtual function void write_encoder(sequence_item_encoder packet);
            bit [9:0] encoded_out_2 ;
-            encode_8b10b_data(packet.input_data,encoded_out_2);
+           if (packet.TxDataK) begin
+            encode_8b10b_k(packet.input_data,encoded_out_2);
+           end
+            else encode_8b10b_data(packet.input_data,encoded_out_2);
             if (encoded_out_2 != (packet.output_data)) begin
-                $error("msimatch expected %b output %b @ input %s ",encoded_out_2 ,packet.output_data,packet.input_data);
+              `uvm_error("msimatch", $sformatf("expected %b output %b @ input data %s K %b ", encoded_out_2, packet.output_data, packet.input_data,packet.TxDataK));
             end
             //**************************//
             // TODO: Check Results Here //
@@ -86,10 +89,80 @@ package scoreboard_encoder;
         3'd4: '{4'b1011, 4'b0100},
         3'd5: '{4'b0101, 4'b0101},
         3'd6: '{4'b0110, 4'b0110},
-        3'd7: '{4'b0111, 4'b1000}
+        3'd7: '{4'b0111, 4'b1000} // donot forget soecial case
       };
       
   
+    // Check if the input exists in the table
+    
+    // Select encoding based on current disparity
+    if (disparity == -1) begin
+
+      encoded_out[5:0] = encoding_table_6[data_in[4:0]][0]; // RD = -1
+    end else begin
+      encoded_out[5:0] = encoding_table_6[data_in [4:0]][1]; // RD = +1
+    end
+
+    // Update disparity
+    ones_count = $countones(  encoded_out[5:0] );       // Count number of 1's
+    zeros_count = 6 - ones_count;              // Count number of 0's
+
+    if (ones_count > zeros_count) begin
+      disparity = 1; // More 1's → RD becomes +1
+    end else if (zeros_count > ones_count) begin
+      disparity = -1; // More 0's → RD becomes -1
+    end
+  
+
+
+    // Select encoding based on current disparity
+    if (disparity == -1) begin
+      if (data_in[4:0]==17 ||data_in[4:0]==18 || data_in[4:0]==20) begin
+        encoded_out[9:6] = 4'b1110;
+      end
+     else encoded_out[9:6] = encoding_table_4[data_in[7:5]][0]; // RD = -1
+    end else begin
+      if (data_in[4:0]==11 ||data_in[4:0]==13 || data_in[4:0]==14) begin
+        encoded_out[9:6] = 4'b0001;
+      end
+      else encoded_out[9:6] = encoding_table_4[data_in[7:5]][1]; // RD = +1
+    end
+
+     ones_count_2 = $countones(encoded_out[9:6] );       // Count number of 1's
+     zeros_count_2 = 4 - ones_count_2;        
+    if (ones_count_2 > zeros_count_2) begin
+        disparity = 1; // More 1's → RD becomes +1
+      end else if (zeros_count_2> ones_count_2) begin
+        disparity = -1; // More 0's → RD becomes -1
+      end
+  endtask
+  task automatic encode_8b10b_k(
+    input  bit [7:0] data_in,
+    output bit [9:0] encoded_out
+  );
+  static int disparity = -1;
+    int ones_count, zeros_count;
+    int  ones_count_2 ,zeros_count_2;
+
+    bit [5:0] encoding_table_6 [5'h17:5'h1E] [2];  // Declare the associative array
+   
+    
+    bit [3:0] encoding_table_4 [8][2] = '{ // RD=-1, RD=+1
+        3'd0: '{4'b1101, 4'b0010},
+        3'd1: '{4'b0110, 4'b1001},
+        3'd2: '{4'b0101, 4'b1010},
+        3'd3: '{4'b0011, 4'b1100},
+        3'd4: '{4'b1011, 4'b0100},
+        3'd5: '{4'b1010, 4'b0101},
+        3'd6: '{4'b1001, 4'b0110},
+        3'd7: '{4'b1110, 4'b0001}
+      };
+      
+      encoding_table_6[5'h17] = '{6'b010111, 6'b101000};
+      encoding_table_6[5'h1B] = '{6'b011011, 6'b100100};
+      encoding_table_6[5'h1C] = '{6'b111100, 6'b000011};
+      encoding_table_6[5'h1D] = '{6'b011101, 6'b100010};
+      encoding_table_6[5'h1E] = '{6'b011110, 6'b100001};
     // Check if the input exists in the table
     
     // Select encoding based on current disparity
