@@ -35,7 +35,8 @@ package scoreboard_encoder;
 
 
   // Task for 8b/10b encoding
-  task automatic encode_8b10b_data(
+
+     task automatic encode_8b10b_data(
     input  bit [7:0] data_in,
     output bit [9:0] encoded_out
   );
@@ -87,6 +88,7 @@ package scoreboard_encoder;
         3'd6: '{4'b0110, 4'b0110},
         3'd7: '{4'b0111, 4'b1000}
       };
+      
   
     // Check if the input exists in the table
     
