@@ -43,7 +43,7 @@ package scoreboard_encoder;
     input  bit [7:0] data_in,
     output bit [9:0] encoded_out
   );
-  static int disparity = -1;
+   int disparity = -1;
     int ones_count, zeros_count;
     int  ones_count_2 ,zeros_count_2;
 
@@ -136,11 +136,11 @@ package scoreboard_encoder;
         disparity = -1; // More 0's → RD becomes -1
       end
   endtask
-  task automatic encode_8b10b_k(
+  task  encode_8b10b_k(
     input  bit [7:0] data_in,
     output bit [9:0] encoded_out
   );
-  static int disparity = -1;
+   int disparity = -1;
     int ones_count, zeros_count;
     int  ones_count_2 ,zeros_count_2;
 
