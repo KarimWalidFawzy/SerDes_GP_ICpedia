@@ -30,16 +30,13 @@ package scoreboard_encoder;
             if (encoded_out_2 != (packet.output_data)) begin
               `uvm_error("msimatch", $sformatf("expected %b output %b @ input data %s K %b ", encoded_out_2, packet.output_data, packet.input_data,packet.TxDataK));
             end
-            //**************************//
-            // TODO: Check Results Here //
-            //**************************//
-            
+     
         endfunction 
 
 
   // Task for 8b/10b encoding
 
-     task automatic encode_8b10b_data(
+     task  encode_8b10b_data(
     input  bit [7:0] data_in,
     output bit [9:0] encoded_out
   );
