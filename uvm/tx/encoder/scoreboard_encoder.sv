@@ -105,13 +105,7 @@ package scoreboard_encoder;
     ones_count = $countones(  encoded_out[5:0] );       // Count number of 1's
     zeros_count = 6 - ones_count;              // Count number of 0's
 
-    if (ones_count > zeros_count) begin
-      disparity = 1; // More 1's → RD becomes +1
-    end else if (zeros_count > ones_count) begin
-      disparity = -1; // More 0's → RD becomes -1
-    end
-  
-
+    disparity=disparity+ones_count-zeros_count;
 
     // Select encoding based on current disparity
     if (disparity == -1) begin
@@ -128,11 +122,7 @@ package scoreboard_encoder;
 
      ones_count_2 = $countones(encoded_out[9:6] );       // Count number of 1's
      zeros_count_2 = 4 - ones_count_2;        
-    if (ones_count_2 > zeros_count_2) begin
-        disparity = 1; // More 1's → RD becomes +1
-      end else if (zeros_count_2> ones_count_2) begin
-        disparity = -1; // More 0's → RD becomes -1
-      end
+   disparity=disparity+ones_count_2-zeros_count_2;
   endtask
   task  encode_8b10b_k(
     input  bit [7:0] data_in,
@@ -172,13 +162,7 @@ package scoreboard_encoder;
     // Update disparity
     ones_count = $countones(  encoded_out[5:0] );       // Count number of 1's
     zeros_count = 6 - ones_count;              // Count number of 0's
-
-    if (ones_count > zeros_count) begin
-      disparity = 1; // More 1's → RD becomes +1
-    end else if (zeros_count > ones_count) begin
-      disparity = -1; // More 0's → RD becomes -1
-    end
-  
+   disparity=disparity+ones_count-zeros_count;
 
 
     // Select encoding based on current disparity
@@ -191,14 +175,8 @@ package scoreboard_encoder;
 
      ones_count_2 = $countones(encoded_out[9:6] );       // Count number of 1's
      zeros_count_2 = 4 - ones_count_2;        
-    if (ones_count_2 > zeros_count_2) begin
-        disparity = 1; // More 1's → RD becomes +1
-      end else if (zeros_count_2> ones_count_2) begin
-        disparity = -1; // More 0's → RD becomes -1
-      end
+    disparity=disparity+ones_count_2-zeros_count_2;
   endtask
-
-
 
         function void report_phase(uvm_phase phase);
             `uvm_info(get_type_name(), $sformatf("correct_count=%d while error count=%d",correct_count , error_count), UVM_LOW)

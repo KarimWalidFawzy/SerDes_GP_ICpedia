@@ -27,11 +27,11 @@ add wave -position insertpoint \
 sim:/top/$design_block_if/* \
 
 
-coverage save top_tb_tb.ucdb -onexit -du encoder
+coverage save top_tb_tb.ucdb -onexit 
 
 run -all
 coverage report -output functional_coverage_rpt.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
-quit -sim
+
 vcover report top_tb_tb.ucdb -details -annotate -all -output code_coverage_rpt.txt
 
 #you can add -option to functional coverage

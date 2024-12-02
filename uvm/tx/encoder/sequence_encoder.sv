@@ -15,7 +15,7 @@ package sequence_encoder;
         endfunction : new
 
         virtual task body();
-            repeat(150) begin
+            repeat(1000) begin
                 sequence_item = sequence_item_encoder::type_id::create("sequence_item");
                 start_item(sequence_item);
                 assert(sequence_item.randomize());

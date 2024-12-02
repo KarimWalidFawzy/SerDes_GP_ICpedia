@@ -30,3 +30,53 @@ package scoreboard_decoder;
 
     endclass
 endpackage
+6b / 5b Decoding Table			
+6 bits binary	5 bits binary	6 bits hex	5 bits hex
+	03	1C
+	05	0F
+	06	00
+	07	07
+	09	10
+	0A	1F
+	0B	0B
+	0C	18
+	0D	0D
+	0E	0E
+	11	01
+	12	02
+	13	13
+	14	04
+	15	15
+	16	16
+	17	17
+	18	08
+	19	19
+	1A	1A
+	1B	1B
+	1C	1C
+	1D	1D
+	1E	1E
+	21	1E
+	22	1D
+	23	03
+	24	1B
+	25	05
+	26	06
+	27	08
+	28	17
+	29	09
+	2A	0A
+	2B	04
+	2C	0C
+	2D	02
+	2E	01
+	31	11
+	32	12
+	33	18
+	34	14
+	35	1F
+	36	10
+	38	07
+	39	00
+	3A	0F
+	3C	1C
