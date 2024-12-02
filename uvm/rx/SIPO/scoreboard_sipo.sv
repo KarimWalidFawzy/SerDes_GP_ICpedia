@@ -8,6 +8,7 @@ package scoreboard_sipo;
         
         int correct_count;
         int error_count;
+
         `uvm_analysis_imp_decl(_sipo)
         uvm_analysis_imp_sipo #(sequence_item_sipo, scoreboard_sipo) scoreboard_block;
         sequence_item_sipo sipo_q[$];
@@ -18,14 +19,17 @@ package scoreboard_sipo;
         endfunction
 
         virtual function void write_sipo(sequence_item_sipo packet);
-            sipo_q.push_back(packet);
-            //**************************//
-            // TODO: Check Results Here //
-            //**************************//
-        endfunction 
+            if (packet.serial_in == packet.parallel_out) begin
+                `uvm_info(get_type_name(), $sformatf("Test Pass: data received = %d", packet.parallel_out), UVM_LOW)
+                correct_count++;
+            end else begin
+                `uvm_error(get_type_name(), $sformatf("Test Failed: input = %d but output = %d ", packet.serial_in, packet.parallel_out))
+                error_count++;
+            end
+        endfunction
 
         function void report_phase(uvm_phase phase);
-            `uvm_info(get_type_name(), $sformatf("correct_count=%d while error count=%d",correct_count , error_count), UVM_LOW)
+            `uvm_info(get_type_name(), $sformatf("correct_count = %0d while error count = %0d", correct_count, error_count), UVM_LOW)
         endfunction
 
     endclass

@@ -6,9 +6,6 @@ module SIPO(
 );
     reg [9:0] shift_reg; // 10-bit shift register
     reg [3:0] count; // 4-bit counter
-    wire comma;
-     
-    assign comma = (shift_reg == 124) || (shift_reg == 380) || (shift_reg == 387) || (shift_reg == 636) || (shift_reg == 643) || (shift_reg == 899);
 
     always @(posedge BitCLK or negedge Reset) begin
         if (!Reset) begin
