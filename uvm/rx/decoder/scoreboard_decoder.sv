@@ -25,6 +25,9 @@ package scoreboard_decoder;
         decode(packet.RxParallel_10,decoded_data,RxDataK);
         if (decoded_data != packet.RxParallel_8 || RxDataK !=packet.RxDataK) begin
             `uvm_error("msimatch", $sformatf("expected %b k %b output %b k %b @ input data %b  ", decoded_data,RxDataK,packet.RxParallel_8 ,packet.RxDataK ,packet.RxParallel_10 ));
+            error_count++;
+        end else begin
+            correct_count++;
         end
         endfunction 
         task decode(
@@ -40,6 +43,7 @@ package scoreboard_decoder;
           bit k_28_x;
           bit k_x_7_1;
           bit k_x_7_2;
+          bit not_D_x_A7;
 
           decoding_table_5[6'h05] = 5'h0F;
           decoding_table_5[6'h06] = 5'h00;
@@ -131,8 +135,9 @@ package scoreboard_decoder;
           decoding_table_k[10'h3A2] = 8'hFD;
           decoding_table_k[10'h3A1] = 8'hFE;
            k_28_x = (data_in[5:0]== 6'b111100|| data_in[5:0]== 6'b000011 );
-           k_x_7_1 = ( data_in[9:6] == 4'b1110 && data_in [5:0]!=6'b110001  && data_in [5:0]!=6'b110010 && data_in[5:0] !=6'b110100);
-           k_x_7_2 = ( data_in[9:6] == 4'b0001 && data_in [5:0]!=6'b001011  && data_in [5:0]!=6'b001101 && data_in[5:0] !=6'b001110);
+           not_D_x_A7 = (data_in[5:0] != 6'b110001 && data_in[5:0] != 6'b110010 && data_in[5:0] != 6'b110100 && data_in[5:0] != 6'b001011 && data_in[5:0] != 6'b001101 && data_in[5:0] != 6'b001110);
+           k_x_7_1 = ( data_in[9:6] == 4'b1110 && not_D_x_A7);
+           k_x_7_2 = ( data_in[9:6] == 4'b0001 && not_D_x_A7);
 
 
           if ( k_28_x || k_x_7_1 ||k_x_7_2) begin // k.28.x or ( k.x.7 not k.x.A7) 
@@ -150,7 +155,7 @@ package scoreboard_decoder;
         
 
         function void report_phase(uvm_phase phase);
-            `uvm_info(get_type_name(), $sformatf("correct_count=%d while error count=%d",correct_count , error_count), UVM_LOW)
+            `uvm_info(get_type_name(), $sformatf("correct_count=%0d while error count=%0d",correct_count , error_count), UVM_LOW)
         endfunction
 
     endclass
