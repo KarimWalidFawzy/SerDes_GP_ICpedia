@@ -19,20 +19,30 @@ switch $design_block {
         set path rx/decoder
     }
 }
-vlog -f $path/runfiles.f +define+$design_block +cover\ 
+vlog -f $path/runfiles.f +define+$design_block +cover
 
-vsim -voptargs=+acc work.top -cover -classdebug -sv_seed 50 +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH 
+vsim -voptargs=+acc -voptargs="+cover=bcefst" work.top -cover -classdebug +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH -sv_seed 50
 
-#add wave -position insertpoint \
-#sim:/top/$design_block_if/* \
+add wave /top/$design_block_if/*
+switch $design_block {
+    ENCODER {
+        add wave /top/encoder/assertions_encoder_i/assert_five_consecutive_bits
+        add wave /top/encoder/assertions_encoder_i/assert_disparity
+        add wave /top/encoder/assertions_encoder_i/assert_five_consecutive_bits_cover
+        add wave /top/encoder/assertions_encoder_i/assert_disparity_cover
+    }
+    SIPO {
+        add wave /top/sipo/assertions_sipo_i/comma_check_assert
+        add wave /top/sipo/assertions_sipo_i/comma_check_cover
+    }
+}
 
-#coverage save top_tb_tb.ucdb -onexit 
+coverage save top_tb_tb.ucdb -onexit 
 
 run -all
-#coverage report -output functional_coverage_rpt.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
 
-#vcover report top_tb_tb.ucdb -details -annotate -all -output code_coverage_rpt.txt
-quit -sim
+coverage report -output functional_coverage_report.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
+vcover report top_tb_tb.ucdb -details -annotate -html -output coverage_reports/$path
 
 #you can add -option to functional coverage
 #you can add -classdebug in vsim command to access the classes in waveform
