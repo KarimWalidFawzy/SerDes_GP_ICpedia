@@ -1,7 +1,7 @@
 
 #Change this variable to one of the following values
 #TOP ENCODER PISO SIPO DECODER
-set design_block DECODER
+set design_block SIPO
 
 set design_block_if [string cat [string tolower $design_block] _if]
 set path top
@@ -21,7 +21,7 @@ switch $design_block {
 }
 vlog -f $path/runfiles.f +define+$design_block +cover
 
-vsim -voptargs=+acc -voptargs="+cover=bcefst" work.top -cover -classdebug +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH -sv_seed 50
+vsim -voptargs=+acc -voptargs="+cover=bcefst" work.top -cover -classdebug +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH -sv_seed 1
 
 add wave /top/$design_block_if/*
 switch $design_block {
