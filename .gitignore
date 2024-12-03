@@ -1,6 +1,7 @@
 # List of untracked files to ignore
 resources/
 work/
+coverage_reports/
 
 *.mti
 *.wlf

@@ -13,7 +13,7 @@ package sequence_item_encoder;
             super.new(name);
         endfunction : new
   constraint tx_data_k_const {
-    TxDataK dist {1:=30 ,0:=40};
+    TxDataK dist {1:=10, 0:=90};
         }
         constraint  k_const { if(TxDataK == 1) input_data inside {S_28_0 ,
         S_28_1 ,
