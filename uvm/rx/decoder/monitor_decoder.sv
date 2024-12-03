@@ -36,7 +36,7 @@ package monitor_decoder;
 
             resp.RxDataK = vif.RxDataK;
 			resp.RxParallel_10=vif.RxParallel_10;
-			resp.RxParallel_8=vif.RxParallel_10;
+			resp.RxParallel_8=vif.RxParallel_8;
 			item_collected_port.write(resp);
 		endtask : sample_item
 

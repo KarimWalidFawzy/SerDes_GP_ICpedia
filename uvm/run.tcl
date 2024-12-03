@@ -23,15 +23,16 @@ vlog -f $path/runfiles.f +define+$design_block +cover\
 
 vsim -voptargs=+acc work.top -cover -classdebug -sv_seed 50 +UVM_TESTNAME=test +UVM_VERBOSITY=UVM_HIGH 
 
-add wave -position insertpoint \
-sim:/top/$design_block_if/* \
+#add wave -position insertpoint \
+#sim:/top/$design_block_if/* \
 
-coverage save top_tb_tb.ucdb -onexit 
+#coverage save top_tb_tb.ucdb -onexit 
 
 run -all
-coverage report -output functional_coverage_rpt.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
+#coverage report -output functional_coverage_rpt.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
 
-vcover report top_tb_tb.ucdb -details -annotate -all -output code_coverage_rpt.txt
+#vcover report top_tb_tb.ucdb -details -annotate -all -output code_coverage_rpt.txt
+quit -sim
 
 #you can add -option to functional coverage
 #you can add -classdebug in vsim command to access the classes in waveform
