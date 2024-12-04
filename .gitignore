@@ -1,8 +1,12 @@
 # List of untracked files to ignore
 resources/
 work/
+coverage_reports/
 
 *.mti
 *.wlf
 *.mpf
 *.mpf_new
+*.vstf
+*.ucdb
+*.txt
