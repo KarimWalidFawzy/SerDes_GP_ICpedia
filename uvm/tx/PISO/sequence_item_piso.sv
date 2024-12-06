@@ -6,9 +6,8 @@ package sequence_item_piso;
     class sequence_item_piso extends uvm_sequence_item ;
         `uvm_object_utils (sequence_item_piso)
 
-        //***************************//
-        // TODO: Define Signals Here //
-        //***************************//
+        rand bit [9:0] parallel_in;
+        bit [9:0] serial_out;
 
         function new (string name = "sequence_item_piso");
             super.new(name);

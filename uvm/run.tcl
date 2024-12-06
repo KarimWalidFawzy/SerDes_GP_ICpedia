@@ -1,7 +1,7 @@
 
 #Change this variable to one of the following values
 #TOP ENCODER PISO SIPO DECODER
-set design_block SIPO
+set design_block PISO
 
 set design_block_if [string cat [string tolower $design_block] _if]
 set path top
@@ -41,8 +41,8 @@ coverage save top_tb_tb.ucdb -onexit
 
 run -all
 
-coverage report -output functional_coverage_report.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
-vcover report top_tb_tb.ucdb -details -annotate -html -output coverage_reports/$path
+#coverage report -output functional_coverage_report.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
+#vcover report top_tb_tb.ucdb -details -annotate -html -output coverage_reports/$path
 
 #you can add -option to functional coverage
 #you can add -classdebug in vsim command to access the classes in waveform

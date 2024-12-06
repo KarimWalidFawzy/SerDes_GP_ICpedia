@@ -30,11 +30,8 @@ package driver_piso;
         endtask : run_phase
 
         virtual task drive_item(sequence_item_piso rhs);
-            @(negedge vif.BitCLK);
-            //*************************//
-            // TODO: Drive Inputs Here //
-            //*************************//
-            // example: vif.signal = rhs.signal;
+            repeat(10) @(negedge vif.BitCLK);
+            vif.TxParallel_10 = rhs.parallel_in;
         endtask : drive_item
 
     endclass

@@ -34,18 +34,18 @@ package scoreboard;
         virtual function void write_dec(sequence_item_top packet);
             sequence_item_top enc_packet = enc_q.pop_front();
             if (packet.output_data == enc_packet.input_data) begin
-                `uvm_info(get_type_name(), $sformatf("test_passed_data =%d ",enc_packet.input_data ), UVM_LOW)
+                `uvm_info(get_type_name(), $sformatf("test_passed_data = %d", enc_packet.input_data.name), UVM_LOW)
                 correct_count ++;
             end 
             else begin
-                `uvm_error(get_type_name(), $sformatf("test_failed_input_data =%d but output data=%d ",enc_packet.input_data.name ,packet.output_data.name))
+                `uvm_error(get_type_name(), $sformatf("test_failed_input_data = %d but output data = %d ",enc_packet.input_data.name ,packet.output_data.name))
                 error_count ++;
             end
             dec_packets++;
         endfunction
 
         function void report_phase(uvm_phase phase);
-            `uvm_info(get_type_name(), $sformatf("correct_count=%d while error count=%d",correct_count , error_count), UVM_LOW)
+            `uvm_info(get_type_name(), $sformatf("correct_count = %0d while error count = %0d",correct_count , error_count), UVM_LOW)
         endfunction
 
     endclass

@@ -3,7 +3,6 @@
 ../hdl/designs/tx/PISO.sv
 ../hdl/designs/rx/decoder.sv
 ../hdl/designs/rx/SIPO.sv
-../hdl/designs/rx/comma_detection.sv
 ../hdl/designs/top_module.sv
 
 //interface
