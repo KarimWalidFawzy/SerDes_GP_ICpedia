@@ -179,7 +179,7 @@ package scoreboard_encoder;
   endtask
 
         function void report_phase(uvm_phase phase);
-            `uvm_info(get_type_name(), $sformatf("correct_count=%d while error count=%d",correct_count , error_count), UVM_LOW)
+            `uvm_info(get_type_name(), $sformatf("correct_count = %0d while error count = %0d",correct_count , error_count), UVM_LOW)
         endfunction
 
     endclass

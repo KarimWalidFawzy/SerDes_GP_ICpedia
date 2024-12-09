@@ -134,28 +134,26 @@ package scoreboard_decoder;
           decoding_table_k[10'h3A4] = 8'hFB;
           decoding_table_k[10'h3A2] = 8'hFD;
           decoding_table_k[10'h3A1] = 8'hFE;
-           k_28_x = (data_in[5:0]== 6'b111100|| data_in[5:0]== 6'b000011 );
-           not_D_x_A7 = (data_in[5:0] != 6'b110001 && data_in[5:0] != 6'b110010 && data_in[5:0] != 6'b110100 && data_in[5:0] != 6'b001011 && data_in[5:0] != 6'b001101 && data_in[5:0] != 6'b001110);
-           k_x_7_1 = ( data_in[9:6] == 4'b1110 && not_D_x_A7);
-           k_x_7_2 = ( data_in[9:6] == 4'b0001 && not_D_x_A7);
+        
+            k_28_x = (data_in[5:0] == 6'b111100 || data_in[5:0] == 6'b000011 );
+            k_x_7_1 = (data_in[9:6] == 4'b1110 && data_in[5:0] != 6'b110001 && data_in[5:0] != 6'b110010 && data_in[5:0] != 6'b110100);
+            k_x_7_2 = (data_in[9:6] == 4'b0001 && data_in[5:0] != 6'b001011 && data_in[5:0] != 6'b001101 && data_in[5:0] != 6'b001110);
 
-
-          if ( k_28_x || k_x_7_1 ||k_x_7_2) begin // k.28.x or ( k.x.7 not k.x.A7) 
-            decoded_data=decoding_table_k[data_in];
-            RxDataK=1;
-          end
-          else begin
-          decoded_data[7:5]=decoding_table_3[data_in[9:6]];
-          decoded_data[4:0]=decoding_table_5[data_in[5:0]];
-          RxDataK=0;
-          end
+            if ( k_28_x || k_x_7_1 || k_x_7_2) begin // k.28.x or ( k.x.7 not k.x.A7) 
+                decoded_data = decoding_table_k[data_in];
+                RxDataK = 1;
+            end else begin
+                decoded_data[7:5] = decoding_table_3[data_in[9:6]];
+                decoded_data[4:0] = decoding_table_5[data_in[5:0]];
+                RxDataK = 0;
+            end
           
           endtask
         
         
 
         function void report_phase(uvm_phase phase);
-            `uvm_info(get_type_name(), $sformatf("correct_count=%0d while error count=%0d",correct_count , error_count), UVM_LOW)
+            `uvm_info(get_type_name(), $sformatf("correct_count = %0d while error count = %0d",correct_count , error_count), UVM_LOW)
         endfunction
 
     endclass

@@ -18,7 +18,7 @@ package driver_sipo;
         endfunction: connect_phase
 
         task run_phase(uvm_phase phase);
-            int rn, i = 0;
+            int random_number, i = 0;
             logic [9:0] comma_values [5] = '{124, 380, 387, 636, 899};
             super.run_phase(phase);
             vif.Reset=0;
@@ -32,8 +32,8 @@ package driver_sipo;
                 end
                 `uvm_info(get_type_name(), $sformatf("Start Sending Comma."), UVM_LOW)
                 if (i < 10) begin
-                    rn = $urandom_range(4,0);
-                    drive_item(comma_values[rn]);
+                    random_number = $urandom_range(4,0);
+                    drive_item(comma_values[random_number]);
                 end else begin
                     drive_item(643);
                 end
