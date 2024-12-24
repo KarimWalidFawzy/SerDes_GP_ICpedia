@@ -15,7 +15,7 @@ reg [3:0] ones,zeros;
 
 assign RxDataK = RxDataK_3 || RxDataK_5;
 assign RxParallel_8 = {RxParallel_3, RxParallel_5};
-always @(*) begin
+always @(posedge BitCLK_10) begin
   ones=RxParallel_10[0]+RxParallel_10[1]+RxParallel_10[2]+RxParallel_10[3]+RxParallel_10[4]
      +RxParallel_10[5]+RxParallel_10[6]+RxParallel_10[7]+RxParallel_10[8]+RxParallel_10[9];
     zeros=10-ones;  
@@ -29,6 +29,8 @@ end
 always @(posedge BitCLK_10) begin
     RxDataK_5 = 0;
     RxParallel_5 = 0;
+    RxDataK_3 = 0;
+    RxParallel_3 = 0;
     decode_error=0;
     case (RxParallel_10[5:0])
         6'h03: begin
@@ -89,12 +91,7 @@ always @(posedge BitCLK_10) begin
             RxParallel_5 = 0;
             decode_error=1; end
     endcase
-end
 
-always @(posedge BitCLK_10) begin
-    RxDataK_3 = 0;
-    RxParallel_3 = 0;
-    decode_error=0;
     if (RxDataK_5) begin        
         case (RxParallel_10[9:6])
             4'h1: RxParallel_3 = 3'h7;

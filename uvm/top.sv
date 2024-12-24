@@ -7,6 +7,7 @@ module top();
     bit BitCLK_10, BitCLK;
 
     initial begin
+        BitCLK_10=1;
         forever begin
             #10 BitCLK_10 = ~BitCLK_10;
         end
