@@ -64,7 +64,9 @@ module top();
             .Reset(decoder_if.Reset),
             .RxParallel_10(decoder_if.RxParallel_10),
             .RxDataK(decoder_if.RxDataK),
-            .RxParallel_8(decoder_if.RxParallel_8[7:0])
+            .RxParallel_8(decoder_if.RxParallel_8[7:0]),
+            .decode_error(decoder_if.decode_error),
+            .disparity_error(decoder_if.disparity_error)
         );
         bind decoder assertions_decoder assertions_decoder_i(decoder_if.DUT);
     `endif

@@ -32,7 +32,7 @@ package monitor_encoder;
 
 		virtual task sample_item();
 			sequence_item_encoder resp = sequence_item_encoder::type_id::create("resp");            
-			@(posedge vif.BitCLK_10);
+		repeat(3)	@(posedge vif.BitCLK_10);
 
 			resp.input_data=vif.TxParallel_8;
 			resp.output_data=vif.TxParallel_10;

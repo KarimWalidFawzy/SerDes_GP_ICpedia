@@ -3,19 +3,33 @@ module decoder (
     input Reset,
     input [9:0] RxParallel_10,
     output RxDataK,
+    output reg disparity_error,
+    output reg decode_error,
     output [7:0] RxParallel_8
 );
 
 reg disparity, RxDataK_5, RxDataK_3;
 reg [4:0] RxParallel_5;
 reg [2:0] RxParallel_3;
+reg [3:0] ones,zeros;
 
 assign RxDataK = RxDataK_3 || RxDataK_5;
 assign RxParallel_8 = {RxParallel_3, RxParallel_5};
-
 always @(*) begin
+  ones=RxParallel_10[0]+RxParallel_10[1]+RxParallel_10[2]+RxParallel_10[3]+RxParallel_10[4]
+     +RxParallel_10[5]+RxParallel_10[6]+RxParallel_10[7]+RxParallel_10[8]+RxParallel_10[9];
+    zeros=10-ones;  
+    disparity=disparity+(ones-zeros); 
+    if ((disparity) >2 || (disparity) <-2 ) begin
+        disparity_error=1;
+    end
+    else  disparity_error=0;
+end
+
+always @(posedge BitCLK_10) begin
     RxDataK_5 = 0;
     RxParallel_5 = 0;
+    decode_error=0;
     case (RxParallel_10[5:0])
         6'h03: begin
             RxDataK_5 = 1;
@@ -71,13 +85,16 @@ always @(*) begin
             RxDataK_5 = 1;
             RxParallel_5 = 5'h1C;
         end
-        default: RxParallel_5 = 0;
+        default: begin 
+            RxParallel_5 = 0;
+            decode_error=1; end
     endcase
 end
 
-always @(*) begin
+always @(posedge BitCLK_10) begin
     RxDataK_3 = 0;
     RxParallel_3 = 0;
+    decode_error=0;
     if (RxDataK_5) begin        
         case (RxParallel_10[9:6])
             4'h1: RxParallel_3 = 3'h7;
@@ -116,9 +133,13 @@ always @(*) begin
             4'hC: RxParallel_3 = 3'h3;
             4'hD: RxParallel_3 = 3'h0;
             4'hE: RxParallel_3 = 3'h7;
-            default: RxParallel_3 = 0;
+            default:begin
+             RxParallel_3 = 0;
+             decode_error=1; 
+            end
         endcase
     end else begin
+    
         case (RxParallel_10[9:6])
             4'h1: begin
                 if (RxParallel_5 == 23 || RxParallel_5 == 27 || RxParallel_5 == 29 || RxParallel_5 == 30) begin
@@ -144,7 +165,9 @@ always @(*) begin
                 end
                 RxParallel_3 = 3'h7;
             end
-            default: RxParallel_3 = 0;
+            default: begin
+            RxParallel_3 = 0;
+            decode_error=1; end
         endcase
     end
 end
