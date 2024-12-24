@@ -11,7 +11,7 @@ package sequence_item_decoder;
         bit[9:0] RxParallel_10;
         
         bit RxDataK;
-        constraint include_ {
+        /*constraint include_ {
             RxParallel_6  inside {3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19,
                                   20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 33,
                                   34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
@@ -29,7 +29,7 @@ package sequence_item_decoder;
                 !(RxParallel_4 inside{0,3,7,8,11,13,14,15}); // K.28.y (-1 disparity)
             else
                 !(RxParallel_4 inside{0,1,14,15}); // D.X
-        };
+        };*/
 
         function void  post_randomize ();
             RxParallel_10={RxParallel_4,RxParallel_6};
