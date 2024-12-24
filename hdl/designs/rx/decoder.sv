@@ -9,7 +9,7 @@ module decoder (
 );
 
 reg  RxDataK_5, RxDataK_3;
-reg  [9:0] disparity=-1;
+reg  [9:0] disparity=0;
 reg [4:0] RxParallel_5;
 reg [2:0] RxParallel_3;
 reg [3:0] ones,zeros;
@@ -17,10 +17,10 @@ reg [3:0] ones,zeros;
 assign RxDataK = RxDataK_3 || RxDataK_5;
 assign RxParallel_8 = {RxParallel_3, RxParallel_5};
 always @(posedge BitCLK_10) begin
-  ones<=RxParallel_10[0]+RxParallel_10[1]+RxParallel_10[2]+RxParallel_10[3]+RxParallel_10[4]
+  ones=RxParallel_10[0]+RxParallel_10[1]+RxParallel_10[2]+RxParallel_10[3]+RxParallel_10[4]
      +RxParallel_10[5]+RxParallel_10[6]+RxParallel_10[7]+RxParallel_10[8]+RxParallel_10[9];
-    zeros<=10-ones;  
-    disparity<=disparity+(ones-zeros); 
+    zeros=10-ones;  
+    disparity=disparity+(ones-zeros); 
     if ((disparity) >2 || (disparity) <-2 ) begin
         disparity_error<=1;
     end

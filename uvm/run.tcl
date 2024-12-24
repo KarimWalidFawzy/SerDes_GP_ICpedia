@@ -35,6 +35,10 @@ switch $design_block {
         add wave /top/sipo/assertions_sipo_i/comma_check_assert
         add wave /top/sipo/assertions_sipo_i/comma_check_cover
     }
+    DECODER {add wave /top/decoder/disparity 
+            add wave  /top/decoder/ones 
+            add wave  /top/decoder/zeros
+    }
 }
 
 coverage save top_tb_tb.ucdb -onexit 
