@@ -2,7 +2,7 @@ package driver_top;
     import uvm_pkg::*;
     `include "uvm_macros.svh"
     import sequence_item_top ::*;
-
+    import enums ::*;
     class driver_top extends uvm_driver #(sequence_item_top);
         `uvm_component_utils(driver_top)
     
@@ -22,6 +22,9 @@ package driver_top;
             vif.Reset=0;
             @(negedge vif.BitCLK_10);
             vif.Reset=1;
+            @(negedge vif.BitCLK_10);
+            vif.TxDataK=1;
+            vif.TxParallel_8=   S_28_5;
             forever begin
                 seq_item_port.get_next_item(req);
                 drive_item(req);

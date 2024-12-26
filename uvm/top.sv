@@ -27,6 +27,8 @@ module top();
             .TxDataK(top_if.TxDataK),
             .TxParallel_8(top_if.TxParallel_8[7:0]),
             .RxDataK(top_if.RxDataK),
+            .decode_error(top_if.decode_error),
+            .disparity_error(top_if.disparity_error),
             .RxParallel_8(top_if.RxParallel_8[7:0])
         );
         bind top_module assertions_top assertions_top_i(top_if.DUT);

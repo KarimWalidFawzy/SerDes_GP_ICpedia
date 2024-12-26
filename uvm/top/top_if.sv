@@ -2,12 +2,12 @@ import enums::*;
 interface top_if (BitCLK, BitCLK_10);
     input BitCLK, BitCLK_10;
     bit Reset;
-    bit TxDataK, RxDataK;
+    bit TxDataK, RxDataK,decode_error,disparity_error;
     data_symbol TxParallel_8, RxParallel_8;
 
     modport DUT (
         input BitCLK, BitCLK_10, Reset, TxDataK, TxParallel_8,
-        output RxDataK, RxParallel_8
+        output RxDataK, RxParallel_8,decode_error,disparity_error
     );
 
 endinterface
