@@ -31,8 +31,9 @@ package monitor_encoder;
 		endtask : run_phase
 
 		virtual task sample_item();
-			sequence_item_encoder resp = sequence_item_encoder::type_id::create("resp");            
-		repeat(3)	@(posedge vif.BitCLK_10);
+			sequence_item_encoder resp = sequence_item_encoder::type_id::create("resp");        
+			@(posedge vif.BitCLK_10);
+					#2;
 
 			resp.input_data=vif.TxParallel_8;
 			resp.output_data=vif.TxParallel_10;

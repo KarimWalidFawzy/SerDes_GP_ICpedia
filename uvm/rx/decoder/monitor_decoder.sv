@@ -32,7 +32,7 @@ package monitor_decoder;
 
 		virtual task sample_item();
 			sequence_item_decoder resp = sequence_item_decoder::type_id::create("resp");            
-			repeat(2)@(posedge vif.BitCLK_10);
+			@(posedge vif.BitCLK_10);
               #2;
             resp.RxDataK = vif.RxDataK;
 			resp.RxParallel_10=vif.RxParallel_10;
