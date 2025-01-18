@@ -1,13 +1,11 @@
 # List of untracked files to ignore
+*
+!*/
+!*.*
+
 resources/
 work/
 coverage_reports/
-
-simulink/*
-!simulink/blocks 
-!simulink/xsim.dir
-!simulink/*.m
-!simulink/hdlverifier*.tcl
 
 *.mti
 *.wlf
@@ -16,3 +14,10 @@ simulink/*
 *.vstf
 *.ucdb
 *.txt
+
+simulink/*
+!simulink/blocks 
+!simulink/hdlverifier*.tcl
+!simulink/*.bat
+!simulink/*.m
+simulink/run_cosim.m
