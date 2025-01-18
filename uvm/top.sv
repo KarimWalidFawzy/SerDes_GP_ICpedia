@@ -7,7 +7,6 @@ module top();
     bit BitCLK_10, BitCLK;
 
     initial begin
-        BitCLK_10=1;
         forever begin
             #10 BitCLK_10 = ~BitCLK_10;
         end
@@ -27,8 +26,8 @@ module top();
             .TxDataK(top_if.TxDataK),
             .TxParallel_8(top_if.TxParallel_8[7:0]),
             .RxDataK(top_if.RxDataK),
-            .decode_error(top_if.decode_error),
-            .disparity_error(top_if.disparity_error),
+            .Decode_Error(top_if.Decode_Error),
+            .Disparity_Error(top_if.Disparity_Error),
             .RxParallel_8(top_if.RxParallel_8[7:0])
         );
         bind top_module assertions_top assertions_top_i(top_if.DUT);
@@ -68,8 +67,8 @@ module top();
             .RxParallel_10(decoder_if.RxParallel_10),
             .RxDataK(decoder_if.RxDataK),
             .RxParallel_8(decoder_if.RxParallel_8[7:0]),
-            .decode_error(decoder_if.decode_error),
-            .disparity_error(decoder_if.disparity_error)
+            .Decode_Error(decoder_if.Decode_Error),
+            .Disparity_Error(decoder_if.Disparity_Error)
         );
         bind decoder assertions_decoder assertions_decoder_i(decoder_if.DUT);
     `endif

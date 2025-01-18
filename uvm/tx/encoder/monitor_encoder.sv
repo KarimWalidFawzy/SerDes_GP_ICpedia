@@ -25,6 +25,7 @@ package monitor_encoder;
 
 		virtual task run_phase(uvm_phase phase);
 			super.run_phase(phase);
+			@(posedge vif.Reset)
 			forever begin
 				sample_item();
 			end
@@ -32,9 +33,7 @@ package monitor_encoder;
 
 		virtual task sample_item();
 			sequence_item_encoder resp = sequence_item_encoder::type_id::create("resp");        
-			@(posedge vif.BitCLK_10);
-					#2;
-
+			@(negedge vif.BitCLK_10);
 			resp.input_data=vif.TxParallel_8;
 			resp.output_data=vif.TxParallel_10;
 			resp.TxDataK=vif.TxDataK;

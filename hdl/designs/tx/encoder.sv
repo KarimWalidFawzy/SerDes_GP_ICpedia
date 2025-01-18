@@ -1,20 +1,22 @@
 module encoder (
     input BitCLK_10,
     input Reset,
-    input [7:0] TxParallel_8,
     input TxDataK,
+    input [7:0] TxParallel_8,
     output reg [9:0] TxParallel_10
 );
 
 reg disparity;
-reg [9:0] TxParallel_10_M;
 reg [5:0] TxParallel_6;
 reg [3:0] TxParallel_4;
-assign TxParallel_10_M={TxParallel_4, TxParallel_6};
-always @(posedge BitCLK_10) begin
-    TxParallel_10 = {TxParallel_4, TxParallel_6}; 
-end
 
+always @(posedge BitCLK_10 or negedge Reset) begin
+    if(!Reset) begin
+        TxParallel_10 <= 0;
+    end else begin
+        TxParallel_10 <= {TxParallel_4, TxParallel_6};
+    end
+end
 
 always @(*) begin
     TxParallel_6 = 0;
@@ -174,7 +176,7 @@ always @(posedge BitCLK_10, negedge Reset) begin
     if (!Reset) begin
         disparity <= 0;
     end else begin
-        if (!(^TxParallel_10_M)) begin
+        if (!((^TxParallel_6) ^ (^TxParallel_4))) begin
             disparity <= disparity + 1;
         end
     end

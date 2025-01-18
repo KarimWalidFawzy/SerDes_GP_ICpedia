@@ -2,32 +2,47 @@ module decoder (
     input BitCLK_10,
     input Reset,
     input [9:0] RxParallel_10,
-    output RxDataK,
-    output reg disparity_error,
-    output reg decode_error,
+    output reg RxDataK,
+    output reg Disparity_Error,
+    output reg Decode_Error,
     output reg [7:0] RxParallel_8
 );
 
-reg  RxDataK_5, RxDataK_3;
-reg  [9:0] disparity=-1;
+reg RxDataK_5, RxDataK_3;
+reg decode_error_comb;
+reg [9:0] disparity;
 reg [4:0] RxParallel_5;
 reg [2:0] RxParallel_3;
 reg [3:0] ones,zeros;
 
-assign RxDataK = RxDataK_3 || RxDataK_5;
-always @(posedge BitCLK_10) begin
-    RxParallel_8 <= {RxParallel_3, RxParallel_5};
+always @(posedge BitCLK_10 or negedge Reset) begin
+    if (!Reset) begin
+        RxParallel_8 <= 0;
+        RxDataK <= 0;
+        Decode_Error <= 0;
+    end else begin
+        RxParallel_8 <= {RxParallel_3, RxParallel_5};
+        RxDataK <= RxDataK_3 || RxDataK_5;
+        Decode_Error <= decode_error_comb;
+    end
 end
 
-always @(posedge BitCLK_10) begin
-  ones=RxParallel_10[0]+RxParallel_10[1]+RxParallel_10[2]+RxParallel_10[3]+RxParallel_10[4]
-     +RxParallel_10[5]+RxParallel_10[6]+RxParallel_10[7]+RxParallel_10[8]+RxParallel_10[9];
-    zeros=10-ones;  
-    disparity=disparity+(ones-zeros); 
-    if ((disparity) >2 || (disparity) <-2 ) begin
-        disparity_error<=1;
+always @(posedge BitCLK_10 or negedge Reset) begin
+    if (!Reset) begin
+        Disparity_Error <= 0;
+        disparity <= -1;
+        ones <= 0;
+        zeros <= 0;
+    end else begin
+        ones = RxParallel_10[0] + RxParallel_10[1] + RxParallel_10[2] + RxParallel_10[3] + RxParallel_10[4]
+             + RxParallel_10[5] + RxParallel_10[6] + RxParallel_10[7] + RxParallel_10[8] + RxParallel_10[9];
+        zeros = 10 - ones;
+        disparity = disparity + (ones - zeros); 
+        if (disparity > 2 || disparity <-2) begin
+            Disparity_Error <= 1;
+        end else
+            Disparity_Error <= 0;
     end
-    else  disparity_error<=0;
 end
 
 always @(*) begin
@@ -35,7 +50,7 @@ always @(*) begin
     RxParallel_5 = 0;
     RxDataK_3 = 0;
     RxParallel_3 = 0;
-    decode_error=0;
+    decode_error_comb = 0;
     case (RxParallel_10[5:0])
         6'h03: begin
             RxDataK_5 = 1;
@@ -93,7 +108,8 @@ always @(*) begin
         end
         default: begin 
             RxParallel_5 = 0;
-            decode_error=1; end
+            decode_error_comb = 1;
+        end
     endcase
 
     if (RxDataK_5) begin        
@@ -135,12 +151,11 @@ always @(*) begin
             4'hD: RxParallel_3 = 3'h0;
             4'hE: RxParallel_3 = 3'h7;
             default:begin
-             RxParallel_3 = 0;
-             decode_error=1; 
+                RxParallel_3 = 0;
+                decode_error_comb = 1; 
             end
         endcase
     end else begin
-    
         case (RxParallel_10[9:6])
             4'h1: begin
                 if (RxParallel_5 == 23 || RxParallel_5 == 27 || RxParallel_5 == 29 || RxParallel_5 == 30) begin
@@ -167,8 +182,9 @@ always @(*) begin
                 RxParallel_3 = 3'h7;
             end
             default: begin
-            RxParallel_3 = 0;
-            decode_error=1; end
+                RxParallel_3 = 0;
+                decode_error_comb = 1;
+            end
         endcase
     end
 end
