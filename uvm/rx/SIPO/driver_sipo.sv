@@ -18,17 +18,25 @@ package driver_sipo;
         endfunction: connect_phase
 
         task run_phase(uvm_phase phase);
+            int random_number, i = 0;
+            logic [9:0] comma_values [5] = '{124, 380, 387, 636, 899};
             super.run_phase(phase);
             vif.Reset=0;
             @(negedge vif.BitCLK);
             vif.Reset=1;
             repeat(10) begin
-                repeat (20+$urandom_range(9, 1)) begin
+                i = i + 1;
+                repeat (20 + $urandom_range(9, 1)) begin
                     @(negedge vif.BitCLK);
                     vif.Serial = $urandom_range(1, 0);
                 end
                 `uvm_info(get_type_name(), $sformatf("Start Sending Comma."), UVM_LOW)
-                drive_item(636);
+                if (i < 10) begin
+                    random_number = $urandom_range(4,0);
+                    drive_item(comma_values[random_number]);
+                end else begin
+                    drive_item(643);
+                end
             end
             forever begin
                 seq_item_port.get_next_item(req);

@@ -18,14 +18,16 @@ package scoreboard_piso;
         endfunction
 
         virtual function void write_piso(sequence_item_piso packet);
-            piso_q.push_back(packet);
-            //**************************//
-            // TODO: Check Results Here //
-            //**************************//
-        endfunction 
+            if (packet.parallel_in == packet.serial_out) begin
+                `uvm_info(get_type_name(), $sformatf("Test Pass: data received = %d", packet.serial_out), UVM_LOW)
+                correct_count++;
+            end else begin
+                `uvm_error(get_type_name(), $sformatf("Test Failed: input = %d but output = %d ", packet.parallel_in, packet.serial_out))
+                error_count++;
+            end        endfunction 
 
         function void report_phase(uvm_phase phase);
-            `uvm_info(get_type_name(), $sformatf("correct_count=%d while error count=%d",correct_count , error_count), UVM_LOW)
+            `uvm_info(get_type_name(), $sformatf("correct_count = %0d while error count = %0d",correct_count , error_count), UVM_LOW)
         endfunction
 
     endclass
