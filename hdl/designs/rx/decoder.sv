@@ -2,20 +2,55 @@ module decoder (
     input BitCLK_10,
     input Reset,
     input [9:0] RxParallel_10,
-    output RxDataK,
-    output [7:0] RxParallel_8
+    output reg RxDataK,
+    output reg Disparity_Error,
+    output reg Decode_Error,
+    output reg [7:0] RxParallel_8
 );
 
-reg disparity, RxDataK_5, RxDataK_3;
+reg RxDataK_5, RxDataK_3;
+reg decode_error_comb;
+reg signed [9:0] disparity;
 reg [4:0] RxParallel_5;
 reg [2:0] RxParallel_3;
+reg [3:0] ones, zeros;
 
-assign RxDataK = RxDataK_3 || RxDataK_5;
-assign RxParallel_8 = {RxParallel_3, RxParallel_5};
+always @(posedge BitCLK_10 or negedge Reset) begin
+    if (!Reset) begin
+        RxParallel_8 <= 0;
+        RxDataK <= 0;
+        Decode_Error <= 0;
+    end else begin
+        RxParallel_8 <= {RxParallel_3, RxParallel_5};
+        RxDataK <= RxDataK_3 || RxDataK_5;
+        Decode_Error <= decode_error_comb;
+    end
+end
+
+always @(posedge BitCLK_10 or negedge Reset) begin
+    if (!Reset) begin
+        Disparity_Error <= 0;
+        disparity <= -1;
+        ones <= 0;
+        zeros <= 0;
+    end else begin
+        ones = RxParallel_10[0] + RxParallel_10[1] + RxParallel_10[2] + RxParallel_10[3] + RxParallel_10[4]
+             + RxParallel_10[5] + RxParallel_10[6] + RxParallel_10[7] + RxParallel_10[8] + RxParallel_10[9];
+        zeros = 10 - ones;
+        disparity = disparity + (ones - zeros); 
+        if (disparity == -1 || disparity == 0 || disparity == 1) begin
+            Disparity_Error <= 0;
+        end else
+            Disparity_Error <= 1;
+    end
+end
 
 always @(*) begin
     RxDataK_5 = 0;
     RxParallel_5 = 0;
+    RxDataK_3 = 0;
+    RxParallel_3 = 0;
+    decode_error_comb = 0;
     case (RxParallel_10[5:0])
         6'h03: begin
             RxDataK_5 = 1;
@@ -71,13 +106,12 @@ always @(*) begin
             RxDataK_5 = 1;
             RxParallel_5 = 5'h1C;
         end
-        default: RxParallel_5 = 0;
+        default: begin 
+            RxParallel_5 = 0;
+            decode_error_comb = 1;
+        end
     endcase
-end
 
-always @(*) begin
-    RxDataK_3 = 0;
-    RxParallel_3 = 0;
     if (RxDataK_5) begin        
         case (RxParallel_10[9:6])
             4'h1: RxParallel_3 = 3'h7;
@@ -116,7 +150,10 @@ always @(*) begin
             4'hC: RxParallel_3 = 3'h3;
             4'hD: RxParallel_3 = 3'h0;
             4'hE: RxParallel_3 = 3'h7;
-            default: RxParallel_3 = 0;
+            default: begin
+                RxParallel_3 = 0;
+                decode_error_comb = 1; 
+            end
         endcase
     end else begin
         case (RxParallel_10[9:6])
@@ -144,7 +181,10 @@ always @(*) begin
                 end
                 RxParallel_3 = 3'h7;
             end
-            default: RxParallel_3 = 0;
+            default: begin
+                RxParallel_3 = 0;
+                decode_error_comb = 1;
+            end
         endcase
     end
 end
