@@ -26,8 +26,6 @@ module top();
             .TxDataK(top_if.TxDataK),
             .TxParallel_8(top_if.TxParallel_8[7:0]),
             .RxDataK(top_if.RxDataK),
-            .Decode_Error(top_if.Decode_Error),
-            .Disparity_Error(top_if.Disparity_Error),
             .RxParallel_8(top_if.RxParallel_8[7:0])
         );
         bind top_module assertions_top assertions_top_i(top_if.DUT);
@@ -66,9 +64,7 @@ module top();
             .Reset(decoder_if.Reset),
             .RxParallel_10(decoder_if.RxParallel_10),
             .RxDataK(decoder_if.RxDataK),
-            .RxParallel_8(decoder_if.RxParallel_8[7:0]),
-            .Decode_Error(decoder_if.Decode_Error),
-            .Disparity_Error(decoder_if.Disparity_Error)
+            .RxParallel_8(decoder_if.RxParallel_8[7:0])
         );
         bind decoder assertions_decoder assertions_decoder_i(decoder_if.DUT);
     `endif
