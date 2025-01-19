@@ -10,10 +10,10 @@ module decoder (
 
 reg RxDataK_5, RxDataK_3;
 reg decode_error_comb;
-reg [9:0] disparity;
+reg signed [9:0] disparity;
 reg [4:0] RxParallel_5;
 reg [2:0] RxParallel_3;
-reg [3:0] ones,zeros;
+reg [3:0] ones, zeros;
 
 always @(posedge BitCLK_10 or negedge Reset) begin
     if (!Reset) begin
@@ -38,10 +38,10 @@ always @(posedge BitCLK_10 or negedge Reset) begin
              + RxParallel_10[5] + RxParallel_10[6] + RxParallel_10[7] + RxParallel_10[8] + RxParallel_10[9];
         zeros = 10 - ones;
         disparity = disparity + (ones - zeros); 
-        if (disparity > 2 || disparity <-2) begin
-            Disparity_Error <= 1;
-        end else
+        if (disparity == -1 || disparity == 0 || disparity == 1) begin
             Disparity_Error <= 0;
+        end else
+            Disparity_Error <= 1;
     end
 end
 
@@ -150,7 +150,7 @@ always @(*) begin
             4'hC: RxParallel_3 = 3'h3;
             4'hD: RxParallel_3 = 3'h0;
             4'hE: RxParallel_3 = 3'h7;
-            default:begin
+            default: begin
                 RxParallel_3 = 0;
                 decode_error_comb = 1; 
             end

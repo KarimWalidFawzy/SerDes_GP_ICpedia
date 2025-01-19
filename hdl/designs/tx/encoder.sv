@@ -108,7 +108,7 @@ end
 always @(*) begin
     TxParallel_4 = 0;
     if (TxDataK) begin
-        if ((^TxParallel_6) ^ disparity) begin
+        if (disparity) begin
             case (TxParallel_8[7:5])
                 3'h0: TxParallel_4 = 4'hD;
                 3'h1: TxParallel_4 = 4'h6;

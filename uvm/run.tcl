@@ -35,21 +35,25 @@ switch $design_block {
         add wave /top/sipo/assertions_sipo_i/comma_check_assert
         add wave /top/sipo/assertions_sipo_i/comma_check_cover
     }
-    DECODER {add wave /top/decoder/disparity 
-            add wave  /top/decoder/ones 
-            add wave  /top/decoder/zeros
+    DECODER {
+        add wave /top/decoder/disparity 
+        add wave /top/decoder/ones 
+        add wave /top/decoder/zeros
     }
 }
 
-coverage save top_tb_tb.ucdb -onexit 
+# un-comment the following line to generate the coverage file
+# coverage save coverage.ucdb -onexit 
 
 run -all
 
-coverage report -output functional_coverage_report.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
-vcover report top_tb_tb.ucdb -details -annotate -html -output coverage_reports/$path
+# run the vcover command on terminal to generate the report from the coverage file
+# vcover report top_tb_tb.ucdb -details -annotate -html -output coverage_reports/$path
 
-#you can add -option to functional coverage
-#you can add -classdebug in vsim command to access the classes in waveform
-#you can add -uvmcontrol=all  in vsim command in case uvm
-#in windows to create sourcefile.txt use dir /b > sourcefile.txt
+# un-comment the following line to generate fuctional coverage report
+# coverage report -output functional_coverage_report.txt -srcfile=* -detail -all -dump -annotate -directive -cvg
 
+# you can add -option to functional coverage
+# you can add -classdebug in vsim command to access the classes in waveform
+# you can add -uvmcontrol=all  in vsim command in case uvm
+# in windows to create sourcefile.txt use dir /b > sourcefile.txt
