@@ -16,7 +16,7 @@ coverage_reports/
 *.txt
 
 simulink/*
-!simulink/blocks 
+!simulink/blocks
 !simulink/hdlverifier*.tcl
 !simulink/*.bat
 !simulink/*.m
