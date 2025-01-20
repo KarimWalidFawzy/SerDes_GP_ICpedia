@@ -7,12 +7,6 @@ resources/
 work/
 coverage_reports/
 
-simulink/*
-!simulink/blocks 
-!simulink/xsim.dir
-!simulink/*.m
-!simulink/hdlverifier*.tcl
-
 *.mti
 *.wlf
 *.mpf
