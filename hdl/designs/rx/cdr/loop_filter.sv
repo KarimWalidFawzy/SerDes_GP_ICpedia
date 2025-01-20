@@ -1,7 +1,7 @@
 module loop_filter (
     input signed [1:0] input_signal,
     input clk,
-    input reset,
+    input Reset,
     input [1:0] gainsel,
     output reg signed [8:0]  output_signal
 );
@@ -11,27 +11,27 @@ module loop_filter (
     reg signed [14:0] FIREGS;
     reg signed [14:0] PIREGS;
     
-    assign temp=input_signal;
+    assign temp = input_signal;
     assign FIIP = (gainsel==2'b00) ? (input_signal) :
                   (gainsel==2'b01) ? (input_signal << 1) :
                   (gainsel==2'b10) ? (input_signal << 2) : (input_signal);
 
-    always @(posedge clk or negedge reset) begin
-        if (!reset) begin
+    always @(posedge clk or negedge Reset) begin
+        if (!Reset) begin
             PIREGS <= 0;
             FIREGS <= 0;
         end else begin
             FIREGS <= FIREGS + FIIP;        
-            PIREGS <= FIREGS[14:6] + PIREGS + (temp << 3);
+            PIREGS <= PIREGS + (FIREGS >>> 6) + (temp << 3);
         end
     end
     
-    always @(posedge clk or negedge reset) begin
-        if (!reset) begin
+    always @(posedge clk or negedge Reset) begin
+        if (!Reset) begin
             output_signal <= 0;
         end
         else
-            output_signal <= PIREGS[14:6];
+            output_signal <= (PIREGS >>> 6);
     end
    
 endmodule
