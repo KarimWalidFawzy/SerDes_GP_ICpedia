@@ -1,4 +1,4 @@
-module BBPD_tb();
+module phase_detector_tb();
 reg Dn_1;
 reg Pn;
 reg Dn;
