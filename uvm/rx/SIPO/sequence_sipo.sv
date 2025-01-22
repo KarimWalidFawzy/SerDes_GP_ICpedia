@@ -3,7 +3,6 @@ package sequence_sipo;
     import uvm_pkg::*;
     `include "uvm_macros.svh"
     import sequence_item_sipo::*;
-    import enums::*;
 
     class sequence_sipo extends uvm_sequence #(sequence_item_sipo);
         `uvm_object_utils(sequence_sipo)

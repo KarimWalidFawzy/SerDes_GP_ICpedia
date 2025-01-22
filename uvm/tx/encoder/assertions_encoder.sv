@@ -2,7 +2,7 @@ import enums ::*;
 module assertions_encoder (encoder_if.DUT _if);
     
     int disparity;
-    int i; // declaring Rd 
+    int i;
 
     initial begin
         disparity=-1;
@@ -34,18 +34,18 @@ module assertions_encoder (encoder_if.DUT _if);
     
     property disparity_check;
         @(negedge _if.BitCLK_10 ) disable iff(!_if.Reset)
-        !(disparity>2 || disparity<-2);
+        !(disparity > 2 || disparity < -2);
     endproperty
         
     // Assert the property
-    assert_five_consecutive_bits: assert property (five_consecutive_bits)
+    five_consecutive_bits_assert: assert property (five_consecutive_bits)
         else $error("5 consecutive 1s or 0s detected in TxParallel_10: %b", _if.TxParallel_10);
         
-    assert_five_consecutive_bits_cover: cover property (five_consecutive_bits);
+    five_consecutive_bits_cover: cover property (five_consecutive_bits);
 
-    assert_disparity: assert property (disparity_check)
+    disparity_assert: assert property (disparity_check)
         else $error("disparity error");
 
-    assert_disparity_cover: cover property (disparity_check);
+    disparity_cover: cover property (disparity_check);
 
 endmodule

@@ -28,7 +28,7 @@ package monitor_top;
 			super.run_phase(phase);
 			forever begin
 				@(negedge vif.BitCLK_10);
-				if (vif.TxParallel_8 == S_28_1)
+				if (vif.TxParallel_8 == S_28_5)
 					break;
 			end
 			forever begin
@@ -39,7 +39,6 @@ package monitor_top;
 		virtual task sample_item();
 			sequence_item_top resp = sequence_item_top::type_id::create("resp");            
 			@(negedge vif.BitCLK_10);
-			//resp.encoded_data=vif.TxParallel_10;
 			resp.input_data = vif.TxParallel_8;
 			item_collected_port.write(resp);
 		endtask : sample_item
@@ -70,7 +69,7 @@ package monitor_top;
 			super.run_phase(phase);
 			forever begin
 				@(negedge vif.BitCLK_10);
-				if (vif.TxParallel_8 == S_28_1)
+				if (vif.TxParallel_8 == S_28_5)
 					break;
 			end
 			repeat(2) @(negedge vif.BitCLK_10);
@@ -84,7 +83,6 @@ package monitor_top;
 			@(negedge vif.BitCLK_10);
 			resp.output_data = vif.RxParallel_8;
 			resp.rx_data_k = vif.RxDataK;
-			`uvm_info(get_type_name(), $sformatf("before_Sending_to_sb =%d ",  resp.output_data), UVM_LOW)
 			item_collected_port.write(resp);
 		endtask : sample_item
 

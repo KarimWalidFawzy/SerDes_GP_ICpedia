@@ -2,6 +2,7 @@ package monitor_sipo;
 	import uvm_pkg::*;
 	`include "uvm_macros.svh"
 	import sequence_item_sipo::*;
+    import enums::*;
 
 	class monitor_sipo extends uvm_monitor;
 		`uvm_component_utils(monitor_sipo)
@@ -27,6 +28,7 @@ package monitor_sipo;
 			bit [11:0] serial_in = 0;
 			bit last_comma = 0;
 			super.run_phase(phase);
+			@(posedge vif.Reset);
 			forever begin
 				detect_comma(last_comma);
 				if (last_comma)
@@ -57,9 +59,9 @@ package monitor_sipo;
 			forever begin
 				@(posedge vif.BitCLK);
 				last_10_bits = {vif.Serial, last_10_bits[9:1]};
-				if (last_10_bits == 124 || last_10_bits == 380 || last_10_bits == 387 || last_10_bits == 636 || last_10_bits == 899) begin
+				if (last_10_bits == K_28_1_p || last_10_bits == K_28_1_n || last_10_bits == K_28_5_p || last_10_bits == K_28_5_n || last_10_bits == K_28_7_n) begin
 					break;
-				end else if (last_10_bits == 643) begin
+				end else if (last_10_bits == K_28_7_p) begin
 					last_comma = 1;
 					break;
 				end

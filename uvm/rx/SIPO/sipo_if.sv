@@ -1,4 +1,3 @@
-import enums::*;
 interface sipo_if (BitCLK);
     input BitCLK;
     bit Reset;

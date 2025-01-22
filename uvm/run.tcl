@@ -26,19 +26,18 @@ vsim -voptargs=+acc -voptargs="+cover=bcefst" work.top -cover -classdebug +UVM_T
 add wave /top/$design_block_if/*
 switch $design_block {
     ENCODER {
-        add wave /top/encoder/assertions_encoder_i/assert_five_consecutive_bits
-        add wave /top/encoder/assertions_encoder_i/assert_disparity
-        add wave /top/encoder/assertions_encoder_i/assert_five_consecutive_bits_cover
-        add wave /top/encoder/assertions_encoder_i/assert_disparity_cover
+        add wave /top/encoder/assertions_encoder_i/five_consecutive_bits_assert
+        add wave /top/encoder/assertions_encoder_i/five_consecutive_bits_cover
+        add wave /top/encoder/assertions_encoder_i/disparity_assert
+        add wave /top/encoder/assertions_encoder_i/disparity_cover
     }
     SIPO {
         add wave /top/sipo/assertions_sipo_i/comma_check_assert
         add wave /top/sipo/assertions_sipo_i/comma_check_cover
     }
     DECODER {
-        add wave /top/decoder/disparity 
-        add wave /top/decoder/ones 
-        add wave /top/decoder/zeros
+        add wave /top/decoder/assertions_decoder_i/disparity_error_assert 
+        add wave /top/decoder/assertions_decoder_i/disparity_error_cover
     }
 }
 

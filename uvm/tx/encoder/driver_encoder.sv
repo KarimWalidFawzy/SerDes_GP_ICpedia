@@ -23,9 +23,6 @@ package driver_encoder;
             vif.Reset=0;
             @(negedge vif.BitCLK_10);
             vif.Reset=1;
-         /*   @(negedge vif.BitCLK_10);
-            vif.TxDataK=1;
-            vif.TxParallel_8 = S_28_5;*/
             forever begin
                 seq_item_port.get_next_item(req);
                 drive_item(req);

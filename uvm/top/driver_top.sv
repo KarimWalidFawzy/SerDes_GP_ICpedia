@@ -25,6 +25,7 @@ package driver_top;
             @(negedge vif.BitCLK_10);
             vif.TxDataK = 1;
             vif.TxParallel_8 = S_28_5;
+            @(negedge vif.BitCLK_10);
             forever begin
                 seq_item_port.get_next_item(req);
                 drive_item(req);
