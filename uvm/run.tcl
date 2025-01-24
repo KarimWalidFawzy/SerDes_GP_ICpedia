@@ -18,6 +18,9 @@ switch $design_block {
     DECODER {
         set path rx/decoder
     }
+    CDR {
+        set path rx/cdr
+    }
 }
 vlog -f $path/runfiles.f +define+$design_block +cover
 
@@ -38,6 +41,16 @@ switch $design_block {
     DECODER {
         add wave /top/decoder/assertions_decoder_i/disparity_error_assert 
         add wave /top/decoder/assertions_decoder_i/disparity_error_cover
+    }
+    CDR {
+        add wave /top/loop_filter/assertions_cdr_i/RESET_ASSERT
+        add wave /top/loop_filter/assertions_cdr_i/NO_TRANSITION_ASSERT
+        add wave /top/loop_filter/assertions_cdr_i/EARLY_ASSERT
+        add wave /top/loop_filter/assertions_cdr_i/LATE_ASSERT
+        add wave /top/loop_filter/assertions_cdr_i/COVER_RESET
+        add wave /top/loop_filter/assertions_cdr_i/COVER_NO_TRANSITION
+        add wave /top/loop_filter/assertions_cdr_i/COVER_EARLY
+        add wave /top/loop_filter/assertions_cdr_i/COVER_LATE
     }
 }
 

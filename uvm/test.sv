@@ -21,6 +21,9 @@ package test;
     `elsif DECODER
 		import sequence_item_decoder::*;
 		import sequence_decoder::*;
+	`elsif CDR
+		import sequence_item_cdr::*;
+		import sequence_cdr::*;
     `endif
 
 
@@ -42,6 +45,8 @@ package test;
 			sequence_sipo sequence_i;
 		`elsif DECODER
 			sequence_decoder sequence_i;
+		`elsif CDR
+			sequence_cdr sequence_i;
 		`endif
 
 		function new(input string name = "test", uvm_component parent = null);
@@ -65,6 +70,8 @@ package test;
 				sequence_i = sequence_sipo::type_id::create("sequence_i",this);
 			`elsif DECODER
 				sequence_i = sequence_decoder::type_id::create("sequence_i",this);
+			`elsif CDR
+				sequence_i = sequence_cdr::type_id::create("sequence_i",this);
 			`endif
 		endfunction: build_phase
 

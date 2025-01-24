@@ -18,6 +18,10 @@ package agent_block;
         import sequence_item_decoder::*;
         import driver_decoder::*;
         import monitor_decoder::*;
+    `elsif CDR
+        import sequence_item_cdr::*;
+        import driver_cdr::*;
+        import monitor_cdr::*;
     `endif
 
 
@@ -37,6 +41,9 @@ package agent_block;
         `elsif DECODER
             driver_decoder driver_block_i;
             monitor_decoder monitor_block_i;
+        `elsif CDR
+            driver_cdr driver_block_i;
+            monitor_cdr monitor_block_i;
         `endif
     
         function new (string name, uvm_component parent);
@@ -58,6 +65,9 @@ package agent_block;
             `elsif DECODER
                 driver_block_i = driver_decoder::type_id::create("driver_block_i", this);
                 monitor_block_i = monitor_decoder::type_id::create("monitor_block_i", this);
+            `elsif CDR
+                driver_block_i = driver_cdr::type_id::create("driver_block_i", this);
+                monitor_block_i = monitor_cdr::type_id::create("monitor_block_i", this);
             `endif
         endfunction
     
