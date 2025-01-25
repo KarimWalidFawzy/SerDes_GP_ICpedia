@@ -35,11 +35,13 @@ package driver_cdr;
             // TODO: Drive Inputs Here //
             //*************************//
             // example: vif.signal = rhs.signal;
-            vif.Reset=rhs.Reset;
-            vif.Dn_1=rhs.Dn_1;
-            vif.Dn=rhs.Dn;
-            vif.Pn=rhs.Pn;
-           // vif.BitCLK=rhs.BitCLK;
+            vif.Reset = rhs.Reset;         
+            vif.Serial = rhs.Serial;       
+            vif.data_clock = rhs.data_clock; 
+            vif.phase_clock = rhs.phase_clock; 
+            vif.recovered_clock = rhs.recovered_clock;
+            
+           
             
         endtask : drive_item
 

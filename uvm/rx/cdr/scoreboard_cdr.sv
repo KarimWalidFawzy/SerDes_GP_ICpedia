@@ -46,20 +46,16 @@ class scoreboard_cdr extends uvm_scoreboard;
   endtask
 
   // Reference model: Generate the expected output
-  task reference_model(sequence_item_cdr item);
-    // Implement the logic for expected behavior
-    if (item.Reset) begin
-      ref_out = 0; // Reset state
-    end else begin
-      case ({item.Dn_1, item.Pn, item.Dn})
-        3'b000: ref_out = phase_shift;               // No transition
-        3'b001: ref_out = phase_shift - 1;           // Early
-        3'b100: ref_out = phase_shift + 1;           // Late
-        3'b111: ref_out = phase_shift;               // No transition
-        default: ref_out = phase_shift; // Invalid states handled as no change
-      endcase
+ task reference_model(sequence_item_cdr item);
+    // Calculate the expected phase_shift based on the decision signal
+    if (item.decision == 2'b11) begin // Early phase
+        ref_out = item.phase_shift + 1; // Increment phase_shift
+    end else if (item.decision == 2'b01) begin // Late phase
+        ref_out = item.phase_shift - 1; // Decrement phase_shift
+    end else begin // Aligned
+        ref_out = item.phase_shift; // No change
     end
-  endtask
+endtask
 
   // Check model: Compare DUT output with reference model output
   task check_data(sequence_item_cdr item);
