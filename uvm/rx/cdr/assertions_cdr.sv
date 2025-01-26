@@ -2,26 +2,26 @@ module assertions_cdr(
     cdr_if.DUT _if
 );
 
-// sequence reset_seq1;
-//     !_if.Reset; // Reset signal is not active
-// endsequence
+sequence reset_seq1;
+    !_if.Reset; // Reset signal is not active
+endsequence
 
-// sequence reset_seq2;
-//     (_if.phase_shift == 0); // Phase shift must be 0 during reset
-// endsequence
+sequence reset_seq2;
+    (_if.phase_shift == 0); // Phase shift must be 0 during reset
+endsequence
 
-// property reset_prop;
-//     @(posedge _if.BitCLK)
-//     reset_seq1 |=> reset_seq2; // When Reset is deasserted, phase_shift should be 0
-// endproperty
+property reset_prop;
+    @(posedge _if.BitCLK)
+    reset_seq1 |=> reset_seq2; // When Reset is deasserted, phase_shift should be 0
+endproperty
 
-// // Assertion for Reset Behavior
-// RESET_ASSERT: assert property (reset_prop)
-//     else $display("Reset Assertion Failed: phase_shift is not 0 during Reset");
+// Assertion for Reset Behavior
+RESET_ASSERT: assert property (reset_prop)
+    else $display("Reset Assertion Failed: phase_shift is not 0 during Reset");
 
-// // Coverage for Reset Behavior
-// COVER_RESET: cover property (reset_prop)
-//     $display("Reset coverage triggered");
+// Coverage for Reset Behavior
+COVER_RESET: cover property (reset_prop)
+    $display("Reset coverage triggered");
 
 // sequence no_transition_seq1;
 //     (_if.Dn_1 == 0 && _if.Pn == 0 && _if.Dn == 0); // No transition condition

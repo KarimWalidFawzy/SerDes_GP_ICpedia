@@ -1,17 +1,18 @@
-interface CDR_if ();
+interface cdr_if (input bit BitCLK);
     // Inputs 
     logic Reset;               
-    logic Serial;              
-    logic data_clock;          
-    logic phase_clock;          
-    logic recovered_clock;     
-    
+    logic Dn_1;
+    logic Pn;
+    logic Dn;
     // Outputs
+    logic [1:0] decision;    
+    logic [1:0] gainsel;                  
+
     logic [8:0] phase_shift;    
-    logic [1:0] decision1 ;// Expose decision signal
     // Modport
-    modport DUT (
-        input Reset, Serial, data_clock, phase_clock, recovered_clock, 
-        output phase_shift                                             
+     modport DUT (
+        input BitCLK, Reset, Dn_1,Pn,Dn,
+        output phase_shift
+        //, decision
     );
 endinterface

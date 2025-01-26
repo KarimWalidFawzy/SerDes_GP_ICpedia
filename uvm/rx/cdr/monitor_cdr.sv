@@ -37,26 +37,15 @@ package monitor_cdr;
             // TODO: Sample Outputs Here //
             //***************************//
 			// example: resp.signal = vif.signal
-			resp.Reset = vif.Reset;         
-            resp.Serial = vif.Serial;      
-            resp.data_clock = vif.data_clock; 
-            resp.phase_clock = vif.phase_clock;
-            resp.recovered_clock = vif.recovered_clock; 
-            resp.phase_shift = vif.phase_shift; 
-            resp.Dn_1 = vif.Dn_1;         
-            resp.Dn = vif.Dn;            
-            resp.Pn = vif.Pn;              
-            resp.decision = vif.decision;  
-            resp.gainsel = vif.gainsel;     
+			// resp.Reset=vif.Reset;
+			// resp.Dn_1=vif.Dn_1;
+			// resp.Dn=vif.Dn;
+			// resp.Pn=vif.Pn;
 			// resp.decision1 = vif.decision1; // Sample decision signal
-			if (vif.Dn ^ vif.Pn) begin
-					resp.decision = 2'b11; // Early
-				end else if (vif.Pn ^ vif.Dn_1) begin
-					resp.decision = 2'b01; // Late
-				end else begin
-					resp.decision = 2'b00; // Aligned
-				end
-	        item_collected_port.write(resp);
+			resp.phase_shift=vif.phase_shift;
+			resp.decision=vif.decision;
+			resp.gainsel=vif.gainsel;
+			item_collected_port.write(resp);
 			
 		endtask
 
