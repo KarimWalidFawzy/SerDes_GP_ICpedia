@@ -3,7 +3,7 @@ module assertions_cdr(
 );
 
 sequence reset_seq1;
-    !_if.Reset; // Reset signal is not active
+    _if.Reset; // Reset signal is not active
 endsequence
 
 sequence reset_seq2;
@@ -24,7 +24,7 @@ COVER_RESET: cover property (reset_prop)
     $display("Reset coverage triggered");
 
 sequence no_transition_seq1;
-    (_if.Reset==1 &&  (((_if.Dn ^ _if.Pn) && (_if.Pn ^ _if.Dn_1))|| (!(_if.Dn ^ _if.Pn) && !(_if.Pn ^ _if.Dn_1)))); // No transition condition
+    (!_if.Reset==1 &&  (((_if.Dn ^ _if.Pn) && (_if.Pn ^ _if.Dn_1))|| (!(_if.Dn ^ _if.Pn) && !(_if.Pn ^ _if.Dn_1)))); // No transition condition
 endsequence
 
 sequence no_transition_seq2;
@@ -45,7 +45,7 @@ COVER_NO_TRANSITION: cover property (no_transition_prop)
     $display("No transition coverage triggered");
 
 sequence early_seq1;
-    (_if.Reset && ((_if.Dn ^ _if.Pn) && !(_if.Pn ^ _if.Dn_1))); // Early transition condition
+    (!_if.Reset && ((_if.Dn ^ _if.Pn) && !(_if.Pn ^ _if.Dn_1))); // Early transition condition
  //(_if.Reset && (_if.decision==2'b11));//دي او اللي فوقيها المفروض ينفعوا
 endsequence
 
@@ -70,7 +70,7 @@ COVER_EARLY: cover property (early_prop)
     $display("Early transition coverage triggered");
 
 sequence late_seq1;
-    (_if.Reset && ((_if.Dn ^ _if.Pn) && !(_if.Pn ^ _if.Dn_1))); // Late transition condition
+    (!_if.Reset && ((_if.Dn ^ _if.Pn) && !(_if.Pn ^ _if.Dn_1))); // Late transition condition
 endsequence
 
 sequence late_seq2;

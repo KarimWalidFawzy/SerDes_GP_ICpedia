@@ -47,7 +47,7 @@ class scoreboard_cdr extends uvm_scoreboard;
 
   // Reference model: Generate the expected output
  task reference_model(sequence_item_cdr item);
-    if (!item.Reset) begin
+    if (item.Reset) begin
       ref_out = 0; // Reset state
     end else begin
       if ( (item.Dn ^ item.Pn)&& !(item.Pn ^ item.Dn_1))
