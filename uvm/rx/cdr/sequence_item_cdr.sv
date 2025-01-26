@@ -29,7 +29,7 @@ package sequence_item_cdr;
         // TODO: Define Constraints Here //
         //*******************************//
          constraint reset_inactive_mostly {
-            Reset dist {0 := 98, 1 := 2}; 
+            Reset dist {0 := 2, 1 := 98}; 
         }
         constraint valid_input_range {
             !(Dn_1 == 1 && Pn == 0 && Dn == 1); 
