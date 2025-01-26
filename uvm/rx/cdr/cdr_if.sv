@@ -12,7 +12,7 @@ interface cdr_if (input bit BitCLK);
     // Modport
      modport DUT (
         input BitCLK, Reset, Dn_1,Pn,Dn,
-        output phase_shift
+        output phase_shift,gainsel,decision
         //, decision
     );
 endinterface

@@ -37,7 +37,7 @@ package sequence_cdr;
         endfunction : new
 
         virtual task body();
-            repeat(1000) begin
+            repeat(10000) begin
                 sequence_item = sequence_item_cdr::type_id::create("sequence_item");
                 start_item(sequence_item);
                 assert(sequence_item.randomize());

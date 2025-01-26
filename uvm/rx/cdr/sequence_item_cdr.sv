@@ -36,12 +36,12 @@ package sequence_item_cdr;
             !(Dn_1 == 0 && Pn == 1 && Dn == 0); 
         }
        
-        constraint decision_c { 
-            decision inside {2'b00, 2'b01, 2'b11}; 
-            }
-        constraint gainsel_c { 
-            gainsel inside {2'b00, 2'b01, 2'b10, 2'b11}; 
-            } 
+        // constraint decision_c { 
+        //     decision inside {2'b00, 2'b01, 2'b11}; 
+        //     }
+        // constraint gainsel_c { 
+        //     gainsel inside {2'b00, 2'b01, 2'b10, 2'b11}; 
+        //     } 
         //*******************************//
         // Define Covergroups Here       //
         //*******************************//
@@ -83,20 +83,20 @@ package sequence_item_cdr;
             
         endgroup
 
-        covergroup internal_signals_cg;
-            option.per_instance = 1;
-            coverpoint decision {
-                bins aligned = {2'b00}; 
-                bins late    = {2'b01};
-                bins early   = {2'b11};
-            }
-            coverpoint gainsel {
-                bins gain_00 = {2'b00};
-                bins gain_01 = {2'b01}; 
-                bins gain_10 = {2'b10}; 
-                bins gain_11 = {2'b11}; 
-            }
-        endgroup
+        // covergroup internal_signals_cg;
+        //     option.per_instance = 1;
+        //     coverpoint decision {
+        //         bins aligned = {2'b00}; 
+        //         bins late    = {2'b01};
+        //         bins early   = {2'b11};
+        //     }
+        //     coverpoint gainsel {
+        //         bins gain_00 = {2'b00};
+        //         bins gain_01 = {2'b01}; 
+        //         bins gain_10 = {2'b10}; 
+        //         bins gain_11 = {2'b11}; 
+        //     }
+        // endgroup
 
         
         function new(string name = "sequence_item_CDR");

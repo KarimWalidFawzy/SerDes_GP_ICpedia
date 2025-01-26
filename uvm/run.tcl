@@ -44,13 +44,13 @@ switch $design_block {
     }
     CDR {
         add wave /top/loop_filter/assertions_cdr_i/RESET_ASSERT
-        # add wave /top/loop_filter/assertions_cdr_i/NO_TRANSITION_ASSERT
-        # add wave /top/loop_filter/assertions_cdr_i/EARLY_ASSERT
-        # add wave /top/loop_filter/assertions_cdr_i/LATE_ASSERT
-        # add wave /top/loop_filter/assertions_cdr_i/COVER_RESET
-        # add wave /top/loop_filter/assertions_cdr_i/COVER_NO_TRANSITION
-        # add wave /top/loop_filter/assertions_cdr_i/COVER_EARLY
-        # add wave /top/loop_filter/assertions_cdr_i/COVER_LATE
+        add wave /top/loop_filter/assertions_cdr_i/NO_TRANSITION_ASSERT
+        add wave /top/loop_filter/assertions_cdr_i/EARLY_ASSERT
+        add wave /top/loop_filter/assertions_cdr_i/LATE_ASSERT
+        add wave /top/loop_filter/assertions_cdr_i/COVER_RESET
+        add wave /top/loop_filter/assertions_cdr_i/COVER_NO_TRANSITION
+        add wave /top/loop_filter/assertions_cdr_i/COVER_EARLY
+        add wave /top/loop_filter/assertions_cdr_i/COVER_LATE
     }
 }
 
