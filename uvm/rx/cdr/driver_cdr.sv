@@ -42,6 +42,7 @@ package driver_cdr;
             vif.BitCLK=rhs.BitCLK;
             vif.decision=rhs.decision;
             vif.gainsel=rhs.gainsel;
+            vif.phase_shift=rhs.phase_shift;
            
             
         endtask : drive_item
