@@ -73,6 +73,7 @@ module top();
         bind decoder assertions_decoder assertions_decoder_i(decoder_if.DUT);
     `elsif CDR
         cdr_if cdr_if (BitCLK);
+        
         bit [1:0] decision;
         phase_detector phase_detector(
             .Dn_1(cdr_if.Dn_1),
@@ -87,7 +88,7 @@ module top();
             .gainsel(2'b0),
             .output_signal(cdr_if.phase_shift)
         );
-        bind loop_filter assertions_cdr assertions_cdr_i(cdr_if.DUT);
+         bind loop_filter assertions_cdr assertions_cdr_i(cdr_if.DUT);
     `endif
 
     initial begin
