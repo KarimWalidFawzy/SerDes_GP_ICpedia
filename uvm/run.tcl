@@ -60,7 +60,7 @@ switch $design_block {
 run -all
 
 # run the vcover command on terminal to generate the report from the coverage file
-# vcover report top_tb_tb.ucdb -details -annotate -html -output coverage_reports/$path
+# vcover report coverage.ucdb -details -annotate -html -output coverage_reports/$path
 
 # un-comment the following line to generate fuctional coverage report
 # coverage report -output functional_coverage_report.txt -srcfile=* -detail -all -dump -annotate -directive -cvg

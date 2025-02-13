@@ -15,7 +15,7 @@ package sequence_sipo;
 
         virtual task body();
             sequence_item = sequence_item_sipo::type_id::create("sequence_item");
-            repeat(50) begin
+            repeat(1000) begin
                 start_item(sequence_item);
                 assert(sequence_item.randomize());
                 finish_item(sequence_item);
