@@ -1,4 +1,3 @@
-import enums::*;
 interface piso_if (BitCLK);
     input BitCLK;
     bit Reset;

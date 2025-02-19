@@ -30,8 +30,8 @@ package driver_decoder;
         endtask : run_phase
 
         virtual task drive_item(sequence_item_decoder rhs);
-            @(negedge vif.BitCLK_10);
             vif.RxParallel_10 = rhs.RxParallel_10;
+            @(negedge vif.BitCLK_10);
         endtask : drive_item
 
     endclass

@@ -26,6 +26,8 @@ module top();
             .TxDataK(top_if.TxDataK),
             .TxParallel_8(top_if.TxParallel_8[7:0]),
             .RxDataK(top_if.RxDataK),
+            .Decode_Error(top_if.Decode_Error),
+            .Disparity_Error(top_if.Disparity_Error),
             .RxParallel_8(top_if.RxParallel_8[7:0])
         );
         bind top_module assertions_top assertions_top_i(top_if.DUT);
@@ -64,9 +66,29 @@ module top();
             .Reset(decoder_if.Reset),
             .RxParallel_10(decoder_if.RxParallel_10),
             .RxDataK(decoder_if.RxDataK),
-            .RxParallel_8(decoder_if.RxParallel_8[7:0])
+            .RxParallel_8(decoder_if.RxParallel_8[7:0]),
+            .Decode_Error(decoder_if.Decode_Error),
+            .Disparity_Error(decoder_if.Disparity_Error)
         );
         bind decoder assertions_decoder assertions_decoder_i(decoder_if.DUT);
+    `elsif CDR
+        cdr_if cdr_if (BitCLK);
+        
+        bit [1:0] decision;
+        phase_detector phase_detector(
+            .Dn_1(cdr_if.Dn_1),
+            .Dn(cdr_if.Dn),
+            .Pn(cdr_if.Pn),
+            .decision(decision)
+        );
+        loop_filter loop_filter(
+            .input_signal(decision),
+            .clk(BitCLK),
+            .Reset(cdr_if.Reset),
+            .gainsel(2'b0),
+            .output_signal(cdr_if.phase_shift)
+        );
+         bind loop_filter assertions_cdr assertions_cdr_i(cdr_if.DUT);
     `endif
 
     initial begin
@@ -80,6 +102,8 @@ module top();
             uvm_config_db #(virtual sipo_if)::set(null, "*", "sipo_if", sipo_if);
         `elsif DECODER
             uvm_config_db #(virtual decoder_if)::set(null, "*", "decoder_if", decoder_if);
+        `elsif CDR
+            uvm_config_db #(virtual cdr_if)::set(null, "*", "cdr_if", cdr_if);
         `endif
         run_test("test");
     end

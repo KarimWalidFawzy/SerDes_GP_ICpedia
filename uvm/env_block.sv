@@ -11,6 +11,8 @@ package env_block;
         import scoreboard_sipo::*;
     `elsif DECODER
         import scoreboard_decoder::*;
+    `elsif CDR
+        import scoreboard_cdr::*;
     `endif
 
     
@@ -27,6 +29,8 @@ package env_block;
             scoreboard_sipo scoreboard_i;
         `elsif DECODER
             scoreboard_decoder scoreboard_i;
+        `elsif CDR
+            scoreboard_cdr scoreboard_i;
         `endif        
     
         function new(string name, uvm_component parent);
@@ -45,6 +49,8 @@ package env_block;
                 scoreboard_i = scoreboard_sipo::type_id::create("scoreboard_i", this);
             `elsif DECODER
                 scoreboard_i = scoreboard_decoder::type_id::create("scoreboard_i", this);
+            `elsif CDR
+                scoreboard_i = scoreboard_cdr::type_id::create("scoreboard_i", this);
             `endif
         endfunction : build_phase
 

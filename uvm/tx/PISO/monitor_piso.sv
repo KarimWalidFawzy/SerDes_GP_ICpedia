@@ -25,6 +25,8 @@ package monitor_piso;
 
 		virtual task run_phase(uvm_phase phase);
 			super.run_phase(phase);
+			@(posedge vif.Reset)
+			@(negedge vif.BitCLK)
 			forever begin
 				sample_item();
 			end
@@ -32,11 +34,13 @@ package monitor_piso;
 
 		virtual task sample_item();
 			sequence_item_piso resp = sequence_item_piso::type_id::create("resp");            
-			@(posedge vif.BitCLK);
-            //***************************//
-            // TODO: Sample Outputs Here //
-            //***************************//
-			// example: resp.signal = vif.signal
+			bit [9:0] serial_out;
+			resp.parallel_in = vif.TxParallel_10;
+			for (int i = 0; i < 10; i++) begin
+				serial_out = {vif.Serial, serial_out[9:1]};
+				@(negedge vif.BitCLK);
+			end
+			resp.serial_out = serial_out;
 			item_collected_port.write(resp);
 		endtask : sample_item
 

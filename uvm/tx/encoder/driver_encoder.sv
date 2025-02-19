@@ -23,9 +23,6 @@ package driver_encoder;
             vif.Reset=0;
             @(negedge vif.BitCLK_10);
             vif.Reset=1;
-         /*   @(negedge vif.BitCLK_10);
-            vif.TxDataK=1;
-            vif.TxParallel_8 = S_28_5;*/
             forever begin
                 seq_item_port.get_next_item(req);
                 drive_item(req);
@@ -34,10 +31,9 @@ package driver_encoder;
         endtask : run_phase
 
         virtual task drive_item(sequence_item_encoder rhs);
-            @(negedge vif.BitCLK_10);
             vif.TxDataK=rhs.TxDataK;
             vif.TxParallel_8 = rhs.input_data;
-
+            @(negedge vif.BitCLK_10);
         endtask : drive_item
 
     endclass
